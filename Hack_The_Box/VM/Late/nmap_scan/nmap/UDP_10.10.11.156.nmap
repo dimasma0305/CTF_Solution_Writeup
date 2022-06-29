@@ -1,0 +1,8 @@
+# Nmap 7.92 scan initiated Sun Jun 26 07:55:47 2022 as: /usr/bin/nmap -sU --max-retries 1 --open --open -oN nmap/UDP_10.10.11.156.nmap --system-dns --stats-every 3s 10.10.11.156
+Warning: 10.10.11.156 giving up on port because retransmission cap hit (1).
+Nmap scan report for images.late.htb (10.10.11.156)
+Host is up (0.058s latency).
+All 1000 scanned ports on images.late.htb (10.10.11.156) are in ignored states.
+Not shown: 973 open|filtered udp ports (no-response), 27 closed udp ports (port-unreach)
+
+# Nmap done at Sun Jun 26 07:56:08 2022 -- 1 IP address (1 host up) scanned in 21.38 seconds

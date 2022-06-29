@@ -1,0 +1,231 @@
+WARNING: Duplicate port number(s) specified.  Are you alert enough to be using Nmap?  Have some coffee or Jolt(tm).
+# Nmap 7.92 scan initiated Mon Jun 27 20:07:48 2022 as: /usr/bin/nmap -sV --script vuln -p80,135,139,443,445,3306,5000,80,135,139,443,445,3306,5000,5040,5985,5986,7680,47001,49664,49665,49666,49667,49668,49669,49670 --open -oN nmap/Vulns_10.10.10.239.nmap --system-dns --stats-every 3s 10.10.10.239
+Nmap scan report for 10.10.10.239
+Host is up (0.060s latency).
+
+PORT      STATE SERVICE      VERSION
+80/tcp    open  http         Apache httpd 2.4.46 ((Win64) OpenSSL/1.1.1j PHP/7.3.27)
+|_http-trace: TRACE is enabled
+| http-fileupload-exploiter: 
+|   
+|     Couldn't find a file-type field.
+|   
+|     Couldn't find a file-type field.
+|   
+|     Couldn't find a file-type field.
+|   
+|_    Couldn't find a file-type field.
+|_http-phpself-xss: ERROR: Script execution failed (use -d to debug)
+| http-csrf: 
+| Spidering limited to: maxdepth=3; maxpagecount=20; withinhost=10.10.10.239
+|   Found the following possible CSRF vulnerabilities: 
+|     
+|     Path: http://10.10.10.239:80/
+|     Form id: 
+|     Form action: login.php
+|     
+|     Path: http://10.10.10.239:80/login.php
+|     Form id: 
+|_    Form action: login.php
+| http-sql-injection: 
+|   Possible sqli for queries:
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=D%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=M%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=S%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=N%3BO%3DD%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=M%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=S%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=D%3BO%3DD%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=N%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=D%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=M%3BO%3DD%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=S%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=N%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=D%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=M%3BO%3DA%27%20OR%20sqlspider
+|     http://10.10.10.239:80/bower_components/jquery/dist/?C=S%3BO%3DD%27%20OR%20sqlspider
+|_    http://10.10.10.239:80/bower_components/jquery/dist/?C=N%3BO%3DA%27%20OR%20sqlspider
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-server-header: Apache/2.4.46 (Win64) OpenSSL/1.1.1j PHP/7.3.27
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|       Slowloris tries to keep many connections to the target web server open and hold
+|       them open as long as possible.  It accomplishes this by opening connections to
+|       the target web server and sending a partial request. By doing so, it starves
+|       the http server's resources causing Denial Of Service.
+|       
+|     Disclosure date: 2009-09-17
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+|_      http://ha.ckers.org/slowloris/
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+| http-enum: 
+|   /admin/: Possible admin folder
+|   /admin/index.php: Possible admin folder
+|   /Admin/: Possible admin folder
+|   /icons/: Potentially interesting folder w/ directory listing
+|   /images/: Potentially interesting directory w/ listing on 'apache/2.4.46 (win64) openssl/1.1.1j php/7.3.27'
+|_  /includes/: Potentially interesting directory w/ listing on 'apache/2.4.46 (win64) openssl/1.1.1j php/7.3.27'
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|       httponly flag not set
+|   /admin/: 
+|     PHPSESSID: 
+|       httponly flag not set
+|   /admin/index.php: 
+|     PHPSESSID: 
+|       httponly flag not set
+|   /Admin/: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-vuln-cve2017-1001000: ERROR: Script execution failed (use -d to debug)
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+443/tcp   open  ssl/http     Apache httpd 2.4.46 (OpenSSL/1.1.1j PHP/7.3.27)
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-server-header: Apache/2.4.46 (Win64) OpenSSL/1.1.1j PHP/7.3.27
+| vulners: 
+|   cpe:/a:apache:http_server:2.4.46: 
+|     	CVE-2022-31813	7.5	https://vulners.com/cve/CVE-2022-31813
+|     	CVE-2022-23943	7.5	https://vulners.com/cve/CVE-2022-23943
+|     	CVE-2022-22720	7.5	https://vulners.com/cve/CVE-2022-22720
+|     	CVE-2021-44790	7.5	https://vulners.com/cve/CVE-2021-44790
+|     	CVE-2021-39275	7.5	https://vulners.com/cve/CVE-2021-39275
+|     	CVE-2021-26691	7.5	https://vulners.com/cve/CVE-2021-26691
+|     	FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8	6.8	https://vulners.com/githubexploit/FDF3DFA1-ED74-5EE2-BF5C-BA752CA34AE8	*EXPLOIT*
+|     	CVE-2022-22721	6.8	https://vulners.com/cve/CVE-2022-22721
+|     	CVE-2021-40438	6.8	https://vulners.com/cve/CVE-2021-40438
+|     	CVE-2020-35452	6.8	https://vulners.com/cve/CVE-2020-35452
+|     	8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2	6.8	https://vulners.com/githubexploit/8AFB43C5-ABD4-52AD-BB19-24D7884FF2A2	*EXPLOIT*
+|     	4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332	6.8	https://vulners.com/githubexploit/4810E2D9-AC5F-5B08-BFB3-DDAFA2F63332	*EXPLOIT*
+|     	4373C92A-2755-5538-9C91-0469C995AA9B	6.8	https://vulners.com/githubexploit/4373C92A-2755-5538-9C91-0469C995AA9B	*EXPLOIT*
+|     	CVE-2022-28615	6.4	https://vulners.com/cve/CVE-2022-28615
+|     	CVE-2021-44224	6.4	https://vulners.com/cve/CVE-2021-44224
+|     	CVE-2022-30556	5.0	https://vulners.com/cve/CVE-2022-30556
+|     	CVE-2022-30522	5.0	https://vulners.com/cve/CVE-2022-30522
+|     	CVE-2022-29404	5.0	https://vulners.com/cve/CVE-2022-29404
+|     	CVE-2022-28614	5.0	https://vulners.com/cve/CVE-2022-28614
+|     	CVE-2022-26377	5.0	https://vulners.com/cve/CVE-2022-26377
+|     	CVE-2022-22719	5.0	https://vulners.com/cve/CVE-2022-22719
+|     	CVE-2021-36160	5.0	https://vulners.com/cve/CVE-2021-36160
+|     	CVE-2021-34798	5.0	https://vulners.com/cve/CVE-2021-34798
+|     	CVE-2021-33193	5.0	https://vulners.com/cve/CVE-2021-33193
+|     	CVE-2021-30641	5.0	https://vulners.com/cve/CVE-2021-30641
+|     	CVE-2021-26690	5.0	https://vulners.com/cve/CVE-2021-26690
+|     	CVE-2020-9490	5.0	https://vulners.com/cve/CVE-2020-9490
+|     	CVE-2020-13950	5.0	https://vulners.com/cve/CVE-2020-13950
+|_    	CVE-2019-17567	5.0	https://vulners.com/cve/CVE-2019-17567
+|_http-trace: TRACE is enabled
+445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+3306/tcp  open  mysql?
+|_mysql-vuln-cve2012-2122: ERROR: Script execution failed (use -d to debug)
+| fingerprint-strings: 
+|   DNSStatusRequestTCP, DNSVersionBindReqTCP, FourOhFourRequest, GenericLines, HTTPOptions, Help, Kerberos, LPDString, NULL, RPCCheck, RTSPRequest, SMBProgNeg, SSLSessionReq, TerminalServerCookie, X11Probe: 
+|_    Host '10.10.14.5' is not allowed to connect to this MariaDB server
+5000/tcp  open  http         Apache httpd 2.4.46 (OpenSSL/1.1.1j PHP/7.3.27)
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|       Slowloris tries to keep many connections to the target web server open and hold
+|       them open as long as possible.  It accomplishes this by opening connections to
+|       the target web server and sending a partial request. By doing so, it starves
+|       the http server's resources causing Denial Of Service.
+|       
+|     Disclosure date: 2009-09-17
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+|_      http://ha.ckers.org/slowloris/
+|_http-trace: TRACE is enabled
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-server-header: Apache/2.4.46 (Win64) OpenSSL/1.1.1j PHP/7.3.27
+| http-enum: 
+|_  /icons/: Potentially interesting folder w/ directory listing
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+5040/tcp  open  unknown
+5985/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+5986/tcp  open  ssl/http     Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+7680/tcp  open  pando-pub?
+47001/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-csrf: Couldn't find any CSRF vulnerabilities.
+|_http-stored-xss: Couldn't find any stored XSS vulnerabilities.
+| http-slowloris-check: 
+|   VULNERABLE:
+|   Slowloris DOS attack
+|     State: LIKELY VULNERABLE
+|     IDs:  CVE:CVE-2007-6750
+|       Slowloris tries to keep many connections to the target web server open and hold
+|       them open as long as possible.  It accomplishes this by opening connections to
+|       the target web server and sending a partial request. By doing so, it starves
+|       the http server's resources causing Denial Of Service.
+|       
+|     Disclosure date: 2009-09-17
+|     References:
+|       https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2007-6750
+|_      http://ha.ckers.org/slowloris/
+|_http-dombased-xss: Couldn't find any DOM based XSS.
+49664/tcp open  msrpc        Microsoft Windows RPC
+49665/tcp open  msrpc        Microsoft Windows RPC
+49666/tcp open  msrpc        Microsoft Windows RPC
+49667/tcp open  msrpc        Microsoft Windows RPC
+49668/tcp open  msrpc        Microsoft Windows RPC
+49669/tcp open  msrpc        Microsoft Windows RPC
+49670/tcp open  msrpc        Microsoft Windows RPC
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port3306-TCP:V=7.92%I=7%D=6/27%Time=62B99D9F%P=x86_64-pc-linux-gnu%r(NU
+SF:LL,49,"E\0\0\x01\xffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowe
+SF:d\x20to\x20connect\x20to\x20this\x20MariaDB\x20server")%r(GenericLines,
+SF:49,"E\0\0\x01\xffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x
+SF:20to\x20connect\x20to\x20this\x20MariaDB\x20server")%r(HTTPOptions,49,"
+SF:E\0\0\x01\xffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to
+SF:\x20connect\x20to\x20this\x20MariaDB\x20server")%r(RTSPRequest,49,"E\0\
+SF:0\x01\xffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20
+SF:connect\x20to\x20this\x20MariaDB\x20server")%r(RPCCheck,49,"E\0\0\x01\x
+SF:ffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect
+SF:\x20to\x20this\x20MariaDB\x20server")%r(DNSVersionBindReqTCP,49,"E\0\0\
+SF:x01\xffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20co
+SF:nnect\x20to\x20this\x20MariaDB\x20server")%r(DNSStatusRequestTCP,49,"E\
+SF:0\0\x01\xffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x
+SF:20connect\x20to\x20this\x20MariaDB\x20server")%r(Help,49,"E\0\0\x01\xff
+SF:j\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x
+SF:20to\x20this\x20MariaDB\x20server")%r(SSLSessionReq,49,"E\0\0\x01\xffj\
+SF:x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x20
+SF:to\x20this\x20MariaDB\x20server")%r(TerminalServerCookie,49,"E\0\0\x01\
+SF:xffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connec
+SF:t\x20to\x20this\x20MariaDB\x20server")%r(Kerberos,49,"E\0\0\x01\xffj\x0
+SF:4Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x20to
+SF:\x20this\x20MariaDB\x20server")%r(SMBProgNeg,49,"E\0\0\x01\xffj\x04Host
+SF:\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x20to\x20t
+SF:his\x20MariaDB\x20server")%r(X11Probe,49,"E\0\0\x01\xffj\x04Host\x20'10
+SF:\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x20to\x20this\x20
+SF:MariaDB\x20server")%r(FourOhFourRequest,49,"E\0\0\x01\xffj\x04Host\x20'
+SF:10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x20to\x20this\x
+SF:20MariaDB\x20server")%r(LPDString,49,"E\0\0\x01\xffj\x04Host\x20'10\.10
+SF:\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x20to\x20this\x20Mari
+SF:aDB\x20server");
+Service Info: Hosts: www.example.com, LOVE, www.love.htb; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_smb-vuln-ms10-054: false
+|_samba-vuln-cve-2012-1182: NT_STATUS_ACCESS_DENIED
+|_smb-vuln-ms10-061: NT_STATUS_ACCESS_DENIED
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jun 27 20:25:37 2022 -- 1 IP address (1 host up) scanned in 1068.65 seconds

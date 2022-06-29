@@ -1,0 +1,15 @@
+POST /ajax.php?action=save_user HTTP/1.1
+Host: preprod-payroll.trick.htb
+Content-Length: 45
+Accept: */*
+X-Requested-With: XMLHttpRequest
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36
+Content-Type: application/x-www-form-urlencoded; charset=UTF-8
+Origin: http://preprod-payroll.trick.htb
+Referer: http://preprod-payroll.trick.htb/index.php?page=users
+Accept-Encoding: gzip, deflate
+Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: PHPSESSID=5etfsqb8a80ln7k0368ectkkho
+Connection: close
+
+id=&name=asd&username=asd&password=asd&type=1

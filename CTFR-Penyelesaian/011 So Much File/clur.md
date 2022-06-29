@@ -1,0 +1,1 @@
+pakai program untuk mengautomsi

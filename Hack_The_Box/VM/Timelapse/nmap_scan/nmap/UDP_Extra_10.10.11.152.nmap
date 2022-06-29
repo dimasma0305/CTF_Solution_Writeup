@@ -1,0 +1,19 @@
+# Nmap 7.92 scan initiated Sun Jun 26 14:25:59 2022 as: /usr/bin/nmap -sCVU --script vulners --script-args mincvss=7.0 -p53,123,389 --open -oN nmap/UDP_Extra_10.10.11.152.nmap --system-dns --stats-every 2s 10.10.11.152
+Nmap scan report for timelapse.htb (10.10.11.152)
+Host is up (0.19s latency).
+
+PORT    STATE SERVICE VERSION
+53/udp  open  domain  (generic dns response: SERVFAIL)
+| fingerprint-strings: 
+|   NBTStat: 
+|_    CKAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+123/udp open  ntp     NTP v3
+389/udp open  ldap    Microsoft Windows Active Directory LDAP (Domain: timelapse.htb0., Site: Default-First-Site-Name)
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port53-UDP:V=7.92%I=7%D=6/26%Time=62B7FC0F%P=x86_64-pc-linux-gnu%r(NBTS
+SF:tat,32,"\x80\xf0\x80\x82\0\x01\0\0\0\0\0\0\x20CKAAAAAAAAAAAAAAAAAAAAAAA
+SF:AAAAAAA\0\0!\0\x01");
+Service Info: Host: DC01; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Sun Jun 26 14:26:25 2022 -- 1 IP address (1 host up) scanned in 26.00 seconds

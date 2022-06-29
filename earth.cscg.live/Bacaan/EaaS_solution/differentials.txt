@@ -1,0 +1,78 @@
+
+F-function differentials:
+
+    00000000 -> 00000000 has theoretical probability 1.0000 and empirical probability 1.0000
+    00400000 -> 00000004 has theoretical probability 0.7500 and empirical probability 0.7509
+    00020000 -> 00400000 has theoretical probability 0.7500 and empirical probability 0.7501
+    00000004 -> 00020000 has theoretical probability 0.7500 and empirical probability 0.7494
+    00420000 -> 00400004 has theoretical probability 0.5625 and empirical probability 0.5567
+    00400004 -> 00020004 has theoretical probability 0.5625 and empirical probability 0.5575
+    00020004 -> 00420000 has theoretical probability 0.5625 and empirical probability 0.5630
+    00420004 -> 00420004 has theoretical probability 0.4219 and empirical probability 0.4179
+
+Whole cipher differentials:
+
+    0000000000000000 -> 0000000000000000 has theoretical probability 1.0000 and empirical probability 1.0000 -  0 active key bits.
+    0000000000001000 -> 0000000000001000 has theoretical probability 0.0018 and empirical probability 0.0017 -  0 active key bits.
+    0010000000000000 -> 0010000000000000 has theoretical probability 0.0018 and empirical probability 0.0015 -  0 active key bits.
+    0000010000000000 -> 0000010000000000 has theoretical probability 0.0018 and empirical probability 0.0019 -  0 active key bits.
+    0000000000002000 -> 0000010000002000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0020000000000000 -> 0020000000001000 has theoretical probability 0.0013 and empirical probability 0.0012 - 12 active key bits.
+    0000020000000000 -> 0010020000000000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0000000000003000 -> 0000010000003000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0020000000001000 -> 0020000000000000 has theoretical probability 0.0013 and empirical probability 0.0012 - 12 active key bits.
+    0000020000001000 -> 0010020000001000 has theoretical probability 0.0013 and empirical probability 0.0014 - 12 active key bits.
+    0010000000002000 -> 0010010000002000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0030000000000000 -> 0030000000001000 has theoretical probability 0.0013 and empirical probability 0.0014 - 12 active key bits.
+    0010020000000000 -> 0000020000000000 has theoretical probability 0.0013 and empirical probability 0.0014 - 12 active key bits.
+    0000010000002000 -> 0000000000002000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0020010000000000 -> 0020010000001000 has theoretical probability 0.0013 and empirical probability 0.0012 - 12 active key bits.
+    0000030000000000 -> 0010030000000000 has theoretical probability 0.0013 and empirical probability 0.0014 - 12 active key bits.
+    0010000000003000 -> 0010010000003000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0030000000001000 -> 0030000000000000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0010020000001000 -> 0000020000001000 has theoretical probability 0.0013 and empirical probability 0.0014 - 12 active key bits.
+    0000010000003000 -> 0000000000003000 has theoretical probability 0.0013 and empirical probability 0.0014 - 12 active key bits.
+    0020010000001000 -> 0020010000000000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0000030000001000 -> 0010030000001000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0010010000002000 -> 0010000000002000 has theoretical probability 0.0013 and empirical probability 0.0014 - 12 active key bits.
+    0030010000000000 -> 0030010000001000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0010030000000000 -> 0000030000000000 has theoretical probability 0.0013 and empirical probability 0.0014 - 12 active key bits.
+    0010010000003000 -> 0010000000003000 has theoretical probability 0.0013 and empirical probability 0.0012 - 12 active key bits.
+    0030010000001000 -> 0030010000000000 has theoretical probability 0.0013 and empirical probability 0.0011 - 12 active key bits.
+    0010030000001000 -> 0000030000001000 has theoretical probability 0.0013 and empirical probability 0.0013 - 12 active key bits.
+    0020000000003000 -> 0020010000002000 has theoretical probability 0.0010 and empirical probability 0.0009 - 24 active key bits.
+    0000020000003000 -> 0010030000003000 has theoretical probability 0.0010 and empirical probability 0.0010 - 24 active key bits.
+    0020020000001000 -> 0030020000000000 has theoretical probability 0.0010 and empirical probability 0.0010 - 24 active key bits.
+    0030000000002000 -> 0030010000003000 has theoretical probability 0.0010 and empirical probability 0.0011 - 24 active key bits.
+    0010020000002000 -> 0000030000002000 has theoretical probability 0.0010 and empirical probability 0.0009 - 24 active key bits.
+    0030020000000000 -> 0020020000001000 has theoretical probability 0.0010 and empirical probability 0.0009 - 24 active key bits.
+    0020010000002000 -> 0020000000003000 has theoretical probability 0.0010 and empirical probability 0.0008 - 24 active key bits.
+    0000030000002000 -> 0010020000002000 has theoretical probability 0.0010 and empirical probability 0.0008 - 24 active key bits.
+    0020030000000000 -> 0030030000001000 has theoretical probability 0.0010 and empirical probability 0.0011 - 24 active key bits.
+    0010000000001000 -> 0010000000001000 has theoretical probability 0.0010 and empirical probability 0.0009 -  0 active key bits.
+    0000010000001000 -> 0000010000001000 has theoretical probability 0.0010 and empirical probability 0.0010 -  0 active key bits.
+    0010010000000000 -> 0010010000000000 has theoretical probability 0.0010 and empirical probability 0.0010 -  0 active key bits.
+    0030010000003000 -> 0030000000002000 has theoretical probability 0.0010 and empirical probability 0.0011 - 24 active key bits.
+    0010030000003000 -> 0000020000003000 has theoretical probability 0.0010 and empirical probability 0.0010 - 24 active key bits.
+    0030030000001000 -> 0020030000000000 has theoretical probability 0.0010 and empirical probability 0.0010 - 24 active key bits.
+    0020020000003000 -> 0030030000002000 has theoretical probability 0.0008 and empirical probability 0.0008 - 36 active key bits.
+    0030020000002000 -> 0020030000003000 has theoretical probability 0.0008 and empirical probability 0.0009 - 36 active key bits.
+    0020030000002000 -> 0030020000003000 has theoretical probability 0.0008 and empirical probability 0.0008 - 36 active key bits.
+    0030020000003000 -> 0020030000002000 has theoretical probability 0.0008 and empirical probability 0.0007 - 36 active key bits.
+    0020030000003000 -> 0030020000002000 has theoretical probability 0.0008 and empirical probability 0.0006 - 36 active key bits.
+    0030030000002000 -> 0020020000003000 has theoretical probability 0.0008 and empirical probability 0.0007 - 36 active key bits.
+    0020000000002000 -> 0020010000003000 has theoretical probability 0.0006 and empirical probability 0.0006 - 24 active key bits.
+    0000020000002000 -> 0010030000002000 has theoretical probability 0.0006 and empirical probability 0.0006 - 24 active key bits.
+    0020020000000000 -> 0030020000001000 has theoretical probability 0.0006 and empirical probability 0.0005 - 24 active key bits.
+    0030000000003000 -> 0030010000002000 has theoretical probability 0.0006 and empirical probability 0.0006 - 24 active key bits.
+    0010020000003000 -> 0000030000003000 has theoretical probability 0.0006 and empirical probability 0.0006 - 24 active key bits.
+    0030020000001000 -> 0020020000000000 has theoretical probability 0.0006 and empirical probability 0.0006 - 24 active key bits.
+    0020010000003000 -> 0020000000002000 has theoretical probability 0.0006 and empirical probability 0.0006 - 24 active key bits.
+    0000030000003000 -> 0010020000003000 has theoretical probability 0.0006 and empirical probability 0.0005 - 24 active key bits.
+    0020030000001000 -> 0030030000000000 has theoretical probability 0.0006 and empirical probability 0.0005 - 24 active key bits.
+    0030010000002000 -> 0030000000003000 has theoretical probability 0.0006 and empirical probability 0.0007 - 24 active key bits.
+    0010030000002000 -> 0000020000002000 has theoretical probability 0.0006 and empirical probability 0.0006 - 24 active key bits.
+    0030030000000000 -> 0020030000001000 has theoretical probability 0.0006 and empirical probability 0.0005 - 24 active key bits.
+    0010010000001000 -> 0010010000001000 has theoretical probability 0.0002 and empirical probability 0.0002 -  0 active key bits.
+    0020020000002000 -> 0030030000003000 has theoretical probability 0.0001 and empirical probability 0.0001 - 36 active key bits.
+    0030030000003000 -> 0020020000002000 has theoretical probability 0.0001 and empirical probability 0.0001 - 36 active key bits.

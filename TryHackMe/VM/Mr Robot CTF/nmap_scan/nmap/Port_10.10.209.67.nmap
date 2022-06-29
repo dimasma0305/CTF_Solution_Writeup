@@ -1,0 +1,10 @@
+# Nmap 7.92 scan initiated Sun Jun 26 06:48:37 2022 as: /usr/bin/nmap -T4 --max-retries 1 --max-scan-delay 20 --open -oN nmap/Port_10.10.209.67.nmap --system-dns --stats-every 1s 10.10.209.67
+Nmap scan report for 10.10.209.67
+Host is up (0.34s latency).
+Not shown: 997 filtered tcp ports (no-response), 1 closed tcp port (conn-refused)
+Some closed ports may be reported as filtered due to --defeat-rst-ratelimit
+PORT    STATE SERVICE
+80/tcp  open  http
+443/tcp open  https
+
+# Nmap done at Sun Jun 26 06:48:59 2022 -- 1 IP address (1 host up) scanned in 22.37 seconds

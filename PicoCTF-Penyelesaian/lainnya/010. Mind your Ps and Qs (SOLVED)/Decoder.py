@@ -1,0 +1,20 @@
+#Diketahui:
+    #ciper text/text yang tersandi
+c= 62324783949134119159408816513334912534343517300880137691662780895409992760262021
+    #n
+n= 1280678415822214057864524798453297819181910621573945477544758171055968245116423923
+    #e
+e= 65537
+
+    #Faktorisasi pertama dari n adalah:
+prime_n= [1899107986527483535344517113948531328331, 674357869540600933870145899564746495319033]
+#start value dari Phi(n)
+phi_n= 1
+#Dijawab:
+    #Rumus:
+phi_n_hasil = (prime_n[0]-1)*(prime_n[1]-1)
+#hasil :Phi(n)/Euler's totient = 1280678415822214057864524798453297819181234364596418349127352680639289550089776560
+print()
+d=pow(e,-1, phi_n_hasil)#=(e^-1)%phi_n_hasil
+ans=pow(c,d,n)#=(c^d)%n
+print(bytes.fromhex(hex(ans)[2:]).decode('ascii'))#convert hex ke ascii

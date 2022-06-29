@@ -1,0 +1,1 @@
+- https://medium.com/@0xdc9/aractf2022-directive-communication-write-up-kernel-exploitation-9b1aff6077b4 // kernel exploit

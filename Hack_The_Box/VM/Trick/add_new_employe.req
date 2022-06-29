@@ -1,0 +1,11 @@
+GET /index.php?id=&firstname=asd&middlename=sad&lastname=asd&department_id=3&position_id= HTTP/1.1
+Host: preprod-payroll.trick.htb
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://preprod-payroll.trick.htb/index.php?page=employee
+Accept-Encoding: gzip, deflate
+Accept-Language: id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7
+Cookie: PHPSESSID=5etfsqb8a80ln7k0368ectkkho
+Connection: close
+

@@ -1,0 +1,39 @@
+root:$6$ywdnF/6huvUwsGAO$TorjteBQIqdvtech59g4dYVlZw5euPOm4z05gpxtpKUozK1YrH00hEd9ew1/Cl7Ak7g8.48q.HmuO5wGqjXCi.:0:0::/root:/bin/bash
+bin:!*:1:1::/:/usr/bin/nologin
+daemon:!*:2:2::/:/usr/bin/nologin
+mail:!*:8:12::/var/spool/mail:/usr/bin/nologin
+ftp:!*:14:11::/srv/ftp:/usr/bin/nologin
+http:!*:33:33::/srv/http:/usr/bin/nologin
+nobody:!*:65534:65534:Nobody:/:/usr/bin/nologin
+dbus:!*:81:81:System Message Bus:/:/usr/bin/nologin
+systemd-coredump:!*:981:981:systemd Core Dumper:/:/usr/bin/nologin
+systemd-network:!*:980:980:systemd Network Management:/:/usr/bin/nologin
+systemd-oom:!*:979:979:systemd Userspace OOM Killer:/:/usr/bin/nologin
+systemd-journal-remote:!*:978:978:systemd Journal Remote:/:/usr/bin/nologin
+systemd-resolve:!*:977:977:systemd Resolver:/:/usr/bin/nologin
+systemd-timesync:!*:976:976:systemd Time Synchronization:/:/usr/bin/nologin
+tss:!*:975:975:tss user for tpm2:/:/usr/bin/nologin
+uuidd:!*:68:68::/:/usr/bin/nologin
+dhcpcd:!*:974:974:dhcpcd privilege separation:/:/usr/bin/nologin
+named:!*:40:40:BIND DNS Server:/:/usr/bin/nologin
+polkitd:!*:102:102:PolicyKit daemon:/:/usr/bin/nologin
+rtkit:!*:133:133:RealtimeKit:/proc:/usr/bin/nologin
+avahi:!*:973:973:Avahi mDNS/DNS-SD daemon:/:/usr/bin/nologin
+cups:!*:209:209:cups helper user:/:/usr/bin/nologin
+sddm:!*:972:972:Simple Desktop Display Manager:/var/lib/sddm:/usr/bin/nologin
+usbmux:!*:140:140:usbmux user:/:/usr/bin/nologin
+geoclue:!*:971:971:Geoinformation service:/var/lib/geoclue:/usr/bin/nologin
+mysql:!*:970:970:MariaDB:/var/lib/mysql:/usr/bin/nologin
+saned:!*:969:969:SANE daemon user:/:/usr/bin/nologin
+wowon:$6$OlqWjIN/gnMCO0g7$MKBdOM3uSuwvPzKIYzPNICtbxWD8nj4nfEfd6oe9pu1S47boDHpK65yj9DkXBfwyKYknoglD9tHxsEaGgKj5f/:1000:1000:Wowon Suparto:/home/wowon:/bin/zsh
+ntp:!*:87:87:Network Time Protocol:/var/lib/ntp:/bin/false
+git:!*:968:968:git daemon user:/:/usr/bin/git-shell
+lightdm:!*:967:967:Light Display Manager:/var/lib/lightdm:/usr/bin/nologin
+dnsmasq:!*:964:964:dnsmasq daemon:/:/usr/bin/nologin
+libvirt-qemu:!*:963:963:Libvirt QEMU user:/:/usr/bin/nologin
+openvpn:!*:962:962:OpenVPN:/:/usr/bin/nologin
+postgres:!*:961:961:PostgreSQL user:/var/lib/postgres:/bin/bash
+qemu:!*:960:960:QEMU user:/:/usr/bin/nologin
+ldap:!*:439:439:LDAP Server:/var/lib/openldap:/usr/bin/nologin
+redis:!*:959:959:Redis in-memory data structure store:/var/lib/redis:/usr/bin/nologin
+flatpak:!*:957:957:Flatpak system helper:/:/usr/bin/nologin

@@ -1,0 +1,37 @@
+# Nmap 7.92 scan initiated Mon Jun 27 19:57:35 2022 as: /usr/bin/nmap -sCV -p5040,5985,5986,7680,47001,49664,49665,49666,49667,49668,49669,49670 --open -oN nmap/Full_Extra_10.10.10.239.nmap --system-dns --stats-every 2s 10.10.10.239
+Nmap scan report for 10.10.10.239
+Host is up (0.15s latency).
+
+PORT      STATE SERVICE    VERSION
+5040/tcp  open  unknown
+5985/tcp  open  http       Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+5986/tcp  open  ssl/http   Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+| tls-alpn: 
+|_  http/1.1
+|_http-server-header: Microsoft-HTTPAPI/2.0
+| ssl-cert: Subject: commonName=LOVE
+| Subject Alternative Name: DNS:LOVE, DNS:Love
+| Not valid before: 2021-04-11T14:39:19
+|_Not valid after:  2024-04-10T14:39:19
+|_ssl-date: 2022-06-27T12:22:26+00:00; +21m56s from scanner time.
+|_http-title: Not Found
+7680/tcp  open  pando-pub?
+47001/tcp open  http       Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+|_http-title: Not Found
+49664/tcp open  msrpc      Microsoft Windows RPC
+49665/tcp open  msrpc      Microsoft Windows RPC
+49666/tcp open  msrpc      Microsoft Windows RPC
+49667/tcp open  msrpc      Microsoft Windows RPC
+49668/tcp open  msrpc      Microsoft Windows RPC
+49669/tcp open  msrpc      Microsoft Windows RPC
+49670/tcp open  msrpc      Microsoft Windows RPC
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: 21m55s
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jun 27 20:00:31 2022 -- 1 IP address (1 host up) scanned in 175.83 seconds

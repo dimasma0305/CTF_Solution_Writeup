@@ -1,0 +1,56 @@
+WARNING: Duplicate port number(s) specified.  Are you alert enough to be using Nmap?  Have some coffee or Jolt(tm).
+# Nmap 7.92 scan initiated Mon Jun 27 20:04:07 2022 as: /usr/bin/nmap -sV --script vulners --script-args mincvss=7.0 -p80,135,139,443,445,3306,5000,80,135,139,443,445,3306,5000,5040,5985,5986,7680,47001,49664,49665,49666,49667,49668,49669,49670 --open -oN nmap/CVEs_10.10.10.239.nmap --system-dns --stats-every 3s 10.10.10.239
+Nmap scan report for 10.10.10.239
+Host is up (0.085s latency).
+
+PORT      STATE SERVICE      VERSION
+80/tcp    open  http         Apache httpd 2.4.46 ((Win64) OpenSSL/1.1.1j PHP/7.3.27)
+|_http-server-header: Apache/2.4.46 (Win64) OpenSSL/1.1.1j PHP/7.3.27
+135/tcp   open  msrpc        Microsoft Windows RPC
+139/tcp   open  netbios-ssn  Microsoft Windows netbios-ssn
+443/tcp   open  ssl/http     Apache httpd 2.4.46 (OpenSSL/1.1.1j PHP/7.3.27)
+|_http-server-header: Apache/2.4.46 (Win64) OpenSSL/1.1.1j PHP/7.3.27
+445/tcp   open  microsoft-ds Microsoft Windows 7 - 10 microsoft-ds (workgroup: WORKGROUP)
+3306/tcp  open  mysql?
+| fingerprint-strings: 
+|   FourOhFourRequest, HTTPOptions, Help, NULL, RPCCheck, X11Probe, giop, ms-sql-s: 
+|_    Host '10.10.14.5' is not allowed to connect to this MariaDB server
+5000/tcp  open  http         Apache httpd 2.4.46 (OpenSSL/1.1.1j PHP/7.3.27)
+|_http-server-header: Apache/2.4.46 (Win64) OpenSSL/1.1.1j PHP/7.3.27
+5040/tcp  open  unknown
+5985/tcp  open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+5986/tcp  open  ssl/http     Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+7680/tcp  open  pando-pub?
+47001/tcp open  http         Microsoft HTTPAPI httpd 2.0 (SSDP/UPnP)
+|_http-server-header: Microsoft-HTTPAPI/2.0
+49664/tcp open  msrpc        Microsoft Windows RPC
+49665/tcp open  msrpc        Microsoft Windows RPC
+49666/tcp open  msrpc        Microsoft Windows RPC
+49667/tcp open  msrpc        Microsoft Windows RPC
+49668/tcp open  msrpc        Microsoft Windows RPC
+49669/tcp open  msrpc        Microsoft Windows RPC
+49670/tcp open  msrpc        Microsoft Windows RPC
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port3306-TCP:V=7.92%I=7%D=6/27%Time=62B99CB8%P=x86_64-pc-linux-gnu%r(NU
+SF:LL,49,"E\0\0\x01\xffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowe
+SF:d\x20to\x20connect\x20to\x20this\x20MariaDB\x20server")%r(HTTPOptions,4
+SF:9,"E\0\0\x01\xffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x2
+SF:0to\x20connect\x20to\x20this\x20MariaDB\x20server")%r(RPCCheck,49,"E\0\
+SF:0\x01\xffj\x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20
+SF:connect\x20to\x20this\x20MariaDB\x20server")%r(Help,49,"E\0\0\x01\xffj\
+SF:x04Host\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x20
+SF:to\x20this\x20MariaDB\x20server")%r(X11Probe,49,"E\0\0\x01\xffj\x04Host
+SF:\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x20to\x20t
+SF:his\x20MariaDB\x20server")%r(FourOhFourRequest,49,"E\0\0\x01\xffj\x04Ho
+SF:st\x20'10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x20to\x2
+SF:0this\x20MariaDB\x20server")%r(ms-sql-s,49,"E\0\0\x01\xffj\x04Host\x20'
+SF:10\.10\.14\.5'\x20is\x20not\x20allowed\x20to\x20connect\x20to\x20this\x
+SF:20MariaDB\x20server")%r(giop,49,"E\0\0\x01\xffj\x04Host\x20'10\.10\.14\
+SF:.5'\x20is\x20not\x20allowed\x20to\x20connect\x20to\x20this\x20MariaDB\x
+SF:20server");
+Service Info: Hosts: www.example.com, LOVE, www.love.htb; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+# Nmap done at Mon Jun 27 20:07:45 2022 -- 1 IP address (1 host up) scanned in 218.37 seconds

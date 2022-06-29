@@ -1,0 +1,26 @@
+
+[0;33mRunning a full scan on [0m10.10.209.67
+[0m
+[0;32mHost is likely running Linux
+
+
+[0;32m---------------------Starting Full Scan------------------------
+[0m
+[0K
+[0K
+PORT    STATE SERVICE
+80/tcp  open  http
+443/tcp open  https
+
+
+
+[0;33mNo new ports
+[0m
+
+
+
+[0;32m---------------------Finished all scans------------------------
+[0m
+
+[0;33mCompleted in 0 seconds
+[0m
