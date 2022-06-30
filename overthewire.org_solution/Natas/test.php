@@ -6,133 +6,122 @@
 <link rel="stylesheet" href="http://natas.labs.overthewire.org/css/wechall.css" />
 <script src="http://natas.labs.overthewire.org/js/jquery-1.9.1.js"></script>
 <script src="http://natas.labs.overthewire.org/js/jquery-ui.js"></script>
-<script src="http://natas.labs.overthewire.org/js/wechall-data.js"></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
-<script>var wechallinfo = { "level": "natas26", "pass": "<censored>" };</script></head>
+<script src=http://natas.labs.overthewire.org/js/wechall-data.js></script><script src="http://natas.labs.overthewire.org/js/wechall.js"></script>
+<script>var wechallinfo = { "level": "natas27", "pass": "<censored>" };</script></head>
 <body>
-<?php
-    // sry, this is ugly as hell.
-    // cheers kaliman ;)
-    // - morla
-    
-    class Logger{
-        private $logFile;
-        private $initMsg;
-        private $exitMsg;
-      
-        function __construct($file){
-            // initialise variables
-            $this->initMsg="#--session started--#\n";
-            $this->exitMsg="#--session end--#\n";
-            $this->logFile = "/tmp/natas26_" . $file . ".log";
-      
-            // write initial message
-            $fd=fopen($this->logFile,"a+");
-            fwrite($fd,$initMsg);
-            fclose($fd);
-        }                       
-      
-        function log($msg){
-            $fd=fopen($this->logFile,"a+");
-            fwrite($fd,$msg."\n");
-            fclose($fd);
-        }                       
-      
-        function __destruct(){
-            // write exit message
-            $fd=fopen($this->logFile,"a+");
-            fwrite($fd,$this->exitMsg);
-            fclose($fd);
-        }                       
-    }
+<h1>natas27</h1>
+<div id="content">
+<?
+
+// morla / 10111
+// database gets cleared every 5 min 
+
+
+/*
+CREATE TABLE `users` (
+  `username` varchar(64) DEFAULT NULL,
+  `password` varchar(64) DEFAULT NULL
+);
+*/
+
+
+function checkCredentials($link,$usr,$pass){
  
-    function showImage($filename){
-        if(file_exists($filename))
-            echo "<img src=\"$filename\">";
-    }
-
-    function drawImage($filename){
-        $img=imagecreatetruecolor(400,300);
-        drawFromUserdata($img);
-        imagepng($img,$filename);     
-        imagedestroy($img);
-    }
+    $user=mysql_real_escape_string($usr);
+    $password=mysql_real_escape_string($pass);
     
-    function drawFromUserdata($img){
-        if( array_key_exists("x1", $_GET) && array_key_exists("y1", $_GET) &&
-            array_key_exists("x2", $_GET) && array_key_exists("y2", $_GET)){
-        
-            $color=imagecolorallocate($img,0xff,0x12,0x1c);
-            imageline($img,$_GET["x1"], $_GET["y1"], 
-                            $_GET["x2"], $_GET["y2"], $color);
-        }
-        
-        if (array_key_exists("drawing", $_COOKIE)){
-            $drawing=unserialize(base64_decode($_COOKIE["drawing"]));
-            if($drawing)
-                foreach($drawing as $object)
-                    if( array_key_exists("x1", $object) && 
-                        array_key_exists("y1", $object) &&
-                        array_key_exists("x2", $object) && 
-                        array_key_exists("y2", $object)){
-                    
-                        $color=imagecolorallocate($img,0xff,0x12,0x1c);
-                        imageline($img,$object["x1"],$object["y1"],
-                                $object["x2"] ,$object["y2"] ,$color);
-            
-                    }
-        }    
+    $query = "SELECT username from users where username='$user' and password='$password' ";
+    $res = mysql_query($query, $link);
+    if(mysql_num_rows($res) > 0){
+        return True;
     }
-    
-    function storeData(){
-        $new_object=array();
+    return False;
+}
 
-        if(array_key_exists("x1", $_GET) && array_key_exists("y1", $_GET) &&
-            array_key_exists("x2", $_GET) && array_key_exists("y2", $_GET)){
-            $new_object["x1"]=$_GET["x1"];
-            $new_object["y1"]=$_GET["y1"];
-            $new_object["x2"]=$_GET["x2"];
-            $new_object["y2"]=$_GET["y2"];
+
+function validUser($link,$usr){
+    
+    $user=mysql_real_escape_string($usr);
+    
+    $query = "SELECT * from users where username='$user'";
+    $res = mysql_query($query, $link);
+    if($res) {
+        if(mysql_num_rows($res) > 0) {
+            return True;
         }
-        
-        if (array_key_exists("drawing", $_COOKIE)){
-            $drawing=unserialize(base64_decode($_COOKIE["drawing"]));
+    }
+    return False;
+}
+
+
+function dumpData($link,$usr){
+    
+    $user=mysql_real_escape_string($usr);
+    
+    $query = "SELECT * from users where username='$user'";
+    $res = mysql_query($query, $link);
+    if($res) {
+        if(mysql_num_rows($res) > 0) {
+            while ($row = mysql_fetch_assoc($res)) {
+                // thanks to Gobo for reporting this bug!  
+                //return print_r($row);
+                return print_r($row,true);
+            }
+        }
+    }
+    return False;
+}
+
+
+function createUser($link, $usr, $pass){
+
+    $user=mysql_real_escape_string($usr);
+    $password=mysql_real_escape_string($pass);
+    
+    $query = "INSERT INTO users (username,password) values ('$user','$password')";
+    $res = mysql_query($query, $link);
+    if(mysql_affected_rows() > 0){
+        return True;
+    }
+    return False;
+}
+
+
+if(array_key_exists("username", $_REQUEST) and array_key_exists("password", $_REQUEST)) {
+    // connect to mysql
+    $link = mysql_connect('localhost', 'natas27', '<censored>');
+    mysql_select_db('natas27', $link);
+   
+
+    if(validUser($link,$_REQUEST["username"])) {
+        //user exists, check creds
+        if(checkCredentials($link,$_REQUEST["username"],$_REQUEST["password"])){
+            echo "Welcome " . htmlentities($_REQUEST["username"]) . "!<br>";
+            echo "Here is your data:<br>";
+            $data=dumpData($link,$_REQUEST["username"]);
+            print htmlentities($data);
         }
         else{
-            // create new array
-            $drawing=array();
+            echo "Wrong password for user: " . htmlentities($_REQUEST["username"]) . "<br>";
+        }        
+    } 
+    else {
+        //user doesn't exist
+        if(createUser($link,$_REQUEST["username"],$_REQUEST["password"])){ 
+            echo "User " . htmlentities($_REQUEST["username"]) . " was created!";
         }
-        
-        $drawing[]=$new_object;
-        setcookie("drawing",base64_encode(serialize($drawing)));
     }
+
+    mysql_close($link);
+} else {
 ?>
 
-<h1>natas26</h1>
-<div id="content">
-
-Draw a line:<br>
-<form name="input" method="get">
-X1<input type="text" name="x1" size=2>
-Y1<input type="text" name="y1" size=2>
-X2<input type="text" name="x2" size=2>
-Y2<input type="text" name="y2" size=2>
-<input type="submit" value="DRAW!">
-</form> 
-
-<?php
-    session_start();
-
-    if (array_key_exists("drawing", $_COOKIE) ||
-        (   array_key_exists("x1", $_GET) && array_key_exists("y1", $_GET) &&
-            array_key_exists("x2", $_GET) && array_key_exists("y2", $_GET))){  
-        $imgfile="img/natas26_" . session_id() .".png"; 
-        drawImage($imgfile); 
-        showImage($imgfile);
-        storeData();
-    }
-    
-?>
-
+<form action="index.php" method="POST">
+Username: <input name="username"><br>
+Password: <input name="password" type="password"><br>
+<input type="submit" value="login" />
+</form>
+<? } ?>
 <div id="viewsource"><a href="index-source.html">View sourcecode</a></div>
 </div>
 </body>

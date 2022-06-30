@@ -24,3 +24,11 @@ D0vlad33nQF0Hz2EP255TP5wSW9ZsRSE
 OsRmXFguozKpTZZ5X14zNO43379LZveg
 GHF6X7YwACaYYssHVY05cFq83hRktl4c
 oGgWAJ7zcGT28vYazGo4rkhOPDhBu34T
+55TBjpPZUUJgVP5b3BnbG6ON9uDPVzCJ
+JWwR438wkgTsNKBbcJoowyysdM82YjeF
+
+## Note
+Chall 26
+https://owasp.org/www-community/vulnerabilities/PHP_Object_Injection
+Chall 27 // Truncated username? with var char lenght "`username` varchar(64) DEFAULT NULL,"
+https://n0j.github.io/2017/07/20/otw-natas-27.html
