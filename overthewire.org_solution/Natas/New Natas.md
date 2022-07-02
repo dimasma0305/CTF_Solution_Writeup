@@ -32,3 +32,5 @@ Chall 26
 https://owasp.org/www-community/vulnerabilities/PHP_Object_Injection
 Chall 27 // Truncated username? with var char lenght "`username` varchar(64) DEFAULT NULL,"
 https://n0j.github.io/2017/07/20/otw-natas-27.html
+Chall 28
+http://www.ilmuhacking.com/cryptography/padding-oracle-attack/
