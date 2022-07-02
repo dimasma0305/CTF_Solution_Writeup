@@ -13,7 +13,7 @@ def decode(query):
 def parsing_to_16_block(query):
     foo = []
     j = 0
-    for i in range(16, len(query), 16):
+    for i in range(16, len(query), 0):
         foo.append(query[j:i])
         j += 16
     foo2 = ''
