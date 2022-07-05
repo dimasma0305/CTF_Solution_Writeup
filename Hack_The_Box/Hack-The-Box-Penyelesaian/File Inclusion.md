@@ -187,7 +187,7 @@ while True:
 ---
 
 ```sh
-ffuf -w /usr/share/wordlists/seclists/Discovery/Web-Content/burp-parameter-names.txt -u http://157.245.33.77:31947/index.php\?FUZZ=value -fs 2309
+ffuf -w /usr/share/wordlists/seclists/Discovery/Web-Content/burp-parameter-names.txt -u http://206.189.26.97:31253/index.php\?FUZZ=value -fs 2309
 ```
 
 ```sh

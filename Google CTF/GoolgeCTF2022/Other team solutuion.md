@@ -6,3 +6,9 @@ https://github.com/piyagehi/CTF-Writeups/blob/main/2022-Google-CTF/misc-appnote.
 https://ctf.harrisongreen.me/2022/googlectf/eldar/
 https://github.com/FarhadAlimohammadi-dir/Google-CTF-2022-Writeups // log4j
 https://github.com/google/google-ctf/tree/master/2022 // google writeup
+https://kileak.github.io/ctf/2022/googlectf22-fixedaslr/
+https://kileak.github.io/ctf/2022/googlectf22-weather/
+https://lkmidas.github.io/posts/20220704-ggctf2022-writeups/ // eldar writeup
+https://gist.github.com/szymex73/29f470c7d053ab8a80de6a78c896a727 // weatcher writeup
+https://ur4ndom.dev/posts/2022-07-04-gctf-treebox/ // treebox writeup
+https://cybernorth.net/writeups/log4j-writeup-google-ctf-2022/#0 // log4j writeup
