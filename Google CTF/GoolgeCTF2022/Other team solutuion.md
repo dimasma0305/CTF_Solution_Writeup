@@ -12,3 +12,6 @@ https://lkmidas.github.io/posts/20220704-ggctf2022-writeups/ // eldar writeup
 https://gist.github.com/szymex73/29f470c7d053ab8a80de6a78c896a727 // weatcher writeup
 https://ur4ndom.dev/posts/2022-07-04-gctf-treebox/ // treebox writeup
 https://cybernorth.net/writeups/log4j-writeup-google-ctf-2022/#0 // log4j writeup
+https://liveoverflow.com/minetest/ // similar to ILIKETRAINS // python z3 implementation
+https://gist.github.com/szymex73/22940751792f3055cc7ccc769ab92d1b // ILIKETRAINS writeup // python z3 implementation
+https://bronson113.github.io/2022/07/05/segfault-labyrinth-GoogleCTF2022.html
