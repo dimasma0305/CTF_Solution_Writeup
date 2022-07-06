@@ -56,6 +56,7 @@ And here we need to pass this function to execute malicious python script to ser
 - ast.Import
 - ast.ImportFrom
 - ast.Call
+
 After some time I found [this](https://book.hacktricks.xyz/generic-methodologies-and-resources/python/bypass-python-sandboxes#python-execution-without-calls) bypass in hacktricks to bypass `call ` and it worked!
 ```python
 # Declare arbitrary exception class
