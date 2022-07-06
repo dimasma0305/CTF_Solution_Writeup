@@ -15,3 +15,6 @@ https://cybernorth.net/writeups/log4j-writeup-google-ctf-2022/#0 // log4j writeu
 https://liveoverflow.com/minetest/ // similar to ILIKETRAINS // python z3 implementation
 https://gist.github.com/szymex73/22940751792f3055cc7ccc769ab92d1b // ILIKETRAINS writeup // python z3 implementation
 https://bronson113.github.io/2022/07/05/segfault-labyrinth-GoogleCTF2022.html
+https://able.bio/sudoaza/treebox-google-ctf-2022--37559140 #pythonsandbox exploit
+https://n132.github.io/2022/07/04/S2.html // sandbox s2
+https://maxniederman.com/posts/google-ctf-2022/ // treebox
