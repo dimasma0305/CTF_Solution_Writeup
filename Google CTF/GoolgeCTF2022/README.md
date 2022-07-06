@@ -72,7 +72,7 @@ try:__
 except Klecko as k:
   k + "/bin/bash -i" #RCE abusing __add__
 ```
-class `Klecko()` creates a function that `__add__` something and returns 1, but adds the function `os.system` instead, and triggers it with "try except" and appends "/bin/bash -i" to the function of that class have os.system in it? I assume this class is an intermediary between the os.system function and the string "/bin/bash -i" thus producing a function like `os.system('/bin/bash -i')` without calling the `os.system` funtion. 
+class `Klecko()` creates a function that `__add__` something and returns 1, but adds the function `os.system` instead, and triggers it with "try except" and appends "/bin/bash -i" to the function of that class have os.system in it? I assume this class is an intermediary between the os.system function and the string "/bin/bash -i" thus producing a function like `os.system('/bin/bash -i')` without calling the `os.system` function. 
 ### Python Solution
 ```python
 import pwn
