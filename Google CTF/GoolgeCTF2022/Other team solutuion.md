@@ -18,3 +18,4 @@ https://bronson113.github.io/2022/07/05/segfault-labyrinth-GoogleCTF2022.html
 https://able.bio/sudoaza/treebox-google-ctf-2022--37559140 #pythonsandbox exploit
 https://n132.github.io/2022/07/04/S2.html // sandbox s2
 https://maxniederman.com/posts/google-ctf-2022/ // treebox
+https://imp.ress.me/blog/2022-07-05/google-ctf-2022-ocr/
