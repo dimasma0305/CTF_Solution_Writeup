@@ -34,3 +34,4 @@ Chall 27 // Truncated username? with var char lenght "`username` varchar(64) DEF
 https://n0j.github.io/2017/07/20/otw-natas-27.html
 Chall 28
 http://www.ilmuhacking.com/cryptography/padding-oracle-attack/
+https://ozarch.xyz/posts/natas28/
