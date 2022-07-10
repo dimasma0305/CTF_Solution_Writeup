@@ -1,5 +1,5 @@
 ## TREEBOX
-
+---
 ### Attachment
 
 ```python
@@ -42,6 +42,8 @@ if verify_secure(tree):  # Safe to execute!
   exec(compiled)
 ```
 
+---
+
 ### Description
 
 This challenge belongs to the sandbox category, and uses python and takes arbitrary python script input from the client and verifies the program with the `verify_secure()` function.
@@ -57,12 +59,12 @@ def verify_secure(m):
   return True
 ...snip...
 ```
-
+---
 And here we need to pass this function to execute malicious python script to server, and we need to pass 3 walls:
 - ast.Import
 - ast.ImportFrom
 - ast.Call
-
+---
 After some time I found [this](https://book.hacktricks.xyz/generic-methodologies-and-resources/python/bypass-python-sandboxes#python-execution-without-calls) bypass in hacktricks to bypass `call ` and it worked!
 
 ```python
@@ -80,8 +82,10 @@ try:__
 except Klecko as k:
   k + "/bin/bash -i" #RCE abusing __add__
 ```
-
+---
 class `Klecko()` creates a function that `__add__` something and returns 1, but adds the function `os.system` instead, and triggers it with "try except" and appends "/bin/bash -i" to the function of that class have os.system in it? I assume this class is an intermediary between the os.system function and the string "/bin/bash -i" thus producing a function like `os.system('/bin/bash -i')` without calling the `os.system` function. 
+
+---
 
 ### Python Solution
 
@@ -109,5 +113,7 @@ p.interactive()
 ```
 
 I just added it to the payload and here we got the shell :)
+
+---
 ### Reference
 - https://book.hacktricks.xyz/generic-methodologies-and-resources/python/bypass-python-sandboxes#python-execution-without-calls
