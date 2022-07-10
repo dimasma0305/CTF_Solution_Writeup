@@ -29,20 +29,25 @@ JWwR438wkgTsNKBbcJoowyysdM82YjeF
 airooCaiseiyee8he8xongien9euhe8b
 wie9iexae0Daihohv8vuu3cei9wahf0e
 hay7aecuungiuKaezuathuk9biin0pu1
+no1vohsheCaiv3ieH4em1ahchisainge
 
 ## Note
 
 - Chall 26
 	- https://owasp.org/www-community/vulnerabilities/PHP_Object_Injection
 
-- Chall 27 // Truncated username? with var char lenght "`username` varchar(64) DEFAULT NULL,"
+- Chall 27 // Truncated username? with var char lenght "`username` varchar(64) DEFAULT NULL," #sqlinjection 
 	- https://n0j.github.io/2017/07/20/otw-natas-27.html
 
 - Chall 28
 	- http://www.ilmuhacking.com/cryptography/padding-oracle-attack/
 	- https://ozarch.xyz/posts/natas28/
 
-- Chall 29 // perl vulnerability #perlexploit
+- Chall 29 // perl open() vulnerability #perlexploit
 	- https://ozarch.xyz/posts/natas29/
 	- https://wiki.sei.cmu.edu/confluence/pages/viewpage.action?pageId=88890543
 	- https://news.ycombinator.com/item?id=3943116
+
+- chall 31 // perl file upload vulnearbility #perlexploit 
+	- https://www.youtube.com/watch?v=BYl3-c2JSL8&t=1181s
+	- https://ozarch.xyz/posts/natas31/
