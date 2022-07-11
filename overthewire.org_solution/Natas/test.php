@@ -1,4 +1,39 @@
 <?php
+            // graz XeR, the first to solve it! thanks for the feedback!
+            // ~morla
+            class Executor{
+                private $filename=""; 
+                private $signature='adeafbadbabec0dedabada55ba55d00d';
+                private $init=False;
 
-$returnValue = unserialize('a:1:{i:0;a:23:{s:2:"id";i:123456;s:5:"title";s:30:"London Tornado — The aftermath";s:11:"description";a:1:{i:0;i:1337;}s:3:"url";s:24:"https://vimeo.com/123456";s:11:"upload_date";s:19:"2006-12-14 06:53:32";s:15:"thumbnail_small";s:111:"https://i.vimeocdn.com/video/46783763-254c2bbf4211bd6657c59e96a682169c8e74fc56e96ebb4e0a2882b103cab878-d_100x75";s:16:"thumbnail_medium";s:112:"https://i.vimeocdn.com/video/46783763-254c2bbf4211bd6657c59e96a682169c8e74fc56e96ebb4e0a2882b103cab878-d_200x150";s:15:"thumbnail_large";s:108:"https://i.vimeocdn.com/video/46783763-254c2bbf4211bd6657c59e96a682169c8e74fc56e96ebb4e0a2882b103cab878-d_640";s:7:"user_id";i:146861;s:9:"user_name";s:11:"wordtracker";s:8:"user_url";s:29:"https://vimeo.com/wordtracker";s:19:"user_portrait_small";s:51:"https://i.vimeocdn.com/portrait/defaults-blue_30x30";s:20:"user_portrait_medium";s:51:"https://i.vimeocdn.com/portrait/defaults-blue_75x75";s:19:"user_portrait_large";s:53:"https://i.vimeocdn.com/portrait/defaults-blue_100x100";s:18:"user_portrait_huge";s:53:"https://i.vimeocdn.com/portrait/defaults-blue_300x300";s:21:"stats_number_of_likes";i:11;s:21:"stats_number_of_plays";i:122560;s:24:"stats_number_of_comments";i:12;s:8:"duration";i:32;s:5:"width";i:320;s:6:"height";i:240;s:4:"tags";s:0:"";s:13:"embed_privacy";s:8:"anywhere";}}');
-print($returnValue);
+                function __construct(){
+                    $this->filename=$_POST["filename"];
+                    if(filesize($_FILES['uploadedfile']['tmp_name']) > 4096) {
+                        echo "File is too big<br>";
+                    }
+                    else {
+                        if(true/*move_uploaded_file($_FILES['uploadedfile']['tmp_name'], "/natas33/upload/" . $this->filename)*/) {
+                            echo "The update has been uploaded to: /natas33/upload/$this->filename<br>";
+                            echo "Firmware upgrad initialised.<br>";
+                        }
+                        else{
+                            echo "There was an error uploading the file, please try again!<br>";
+                        }
+                    }
+                }
+
+                function __destruct(){
+                    // upgrade firmware at the end of this script
+
+                    // "The working directory in the script shutdown phase can be different with some SAPIs (e.g. Apache)."
+                    if(getcwd() === "/") chdir("/natas33/uploads/");
+                    if(md5_file($this->filename) == $this->signature){
+                        echo "Congratulations! Running firmware update: $this->filename <br>";
+                        passthru("php " . $this->filename);
+                    }
+                    else{
+                        echo "Failur! MD5sum mismatch!<br>";
+                    }
+                }
+            }
+        ?>
