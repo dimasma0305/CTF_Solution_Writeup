@@ -6,7 +6,7 @@ https://m.facebook.com/story.php?story_fbid=pfbid02YGrDKzfZgr2zLQBQcemRgRFcMjnyL
 https://en.wikipedia.org/wiki/MPEG-4
 '''
 import ffmpeg
-from pprint import pprint
+# from pprint import pprint
 from struct import pack
 import numpy
 import re
@@ -66,12 +66,12 @@ def main():
     with open(INPUTFILE, 'rb') as f:
         data = f.read()
         # offset of the duration in the header
-        duration_offset = find_duration_address(data)
+        duration_address = find_duration_address(data)
 
     # convert the duration to a big-endian byte string
     mod_dur = pack('>Q', DURATION_VALUE)
 
-    rewrite_duration(INPUTFILE, OUTPUTFILE, duration_offset, mod_dur)
+    rewrite_duration(INPUTFILE, OUTPUTFILE, duration_address, mod_dur)
     print_info(OUTPUTFILE, mod_dur, DURATION_VALUE)
 
 
