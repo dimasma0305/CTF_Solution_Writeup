@@ -40,7 +40,7 @@ def print_info(outputfile, mod_dur, duration_val) -> None:
 def find_duration_address(data) -> int:
     '''
     Find the addres of duration in mvhd.
-    The calculation is obtained from the sum of address_mvhd + number_byte_mvhd + 8_null_bytes
+    The calculation is obtained from the sum of address_mvhd + number_byte_mvhd + 12_null_bytes
     '''
     mvhd_offset = 0
     while data[mvhd_offset:mvhd_offset+4] != b'mvhd':
