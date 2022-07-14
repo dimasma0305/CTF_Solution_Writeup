@@ -65,7 +65,7 @@ def rewrite_duration(inputfile, outputfile, duration_offset, input_duration) -> 
 def main():
     with open(INPUTFILE, 'rb') as f:
         data = f.read()
-        # offset of the duration in the header
+        # address of the duration in the header
         duration_address = find_duration_address(data)
 
     # convert the duration to a big-endian byte string
