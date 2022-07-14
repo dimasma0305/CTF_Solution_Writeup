@@ -59,7 +59,7 @@ def rewrite_duration(inputfile, outputfile, duration_offset, input_duration) -> 
             w[int(duration_offset)+8:]
         with open(outputfile, 'wb') as f:
             f.write(w)
-        return None
+    return None
 
 
 def main():
