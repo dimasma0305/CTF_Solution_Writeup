@@ -48,7 +48,7 @@ def find_duration_address(data) -> int:
     return mvhd_offset + 4 + 12
 
 
-def rewrite_duration(inputfile, outputfile, duration_offset, input_duration) -> None:
+def rewrite_duration(inputfile: str, outputfile: str, duration_offset:int, input_duration) -> None:
     '''
     rewrite the duration of mp4 vidio
     '''
