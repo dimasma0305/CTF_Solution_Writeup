@@ -8,8 +8,7 @@ https://en.wikipedia.org/wiki/MPEG-4
 import ffmpeg
 # from pprint import pprint
 from struct import pack
-import numpy
-import re
+from numpy import int64
 
 INPUTFILE = '123123.mp4'
 OUTPUTFILE = "foo.mp4"
@@ -21,7 +20,7 @@ def print_info(outputfile, mod_dur, duration_val) -> None:
     print duration in track 1, track 2, and track 3 if exist
     '''
     print("hex: "+str(mod_dur))
-    print("int: "+str(numpy.int64(duration_val)))
+    print("int: "+str(int64(duration_val)))
 
     print("duration track 1 :", ffmpeg.probe(outputfile)['format']['duration'])
     try:
@@ -42,10 +41,8 @@ def find_duration_address(data) -> int:
     Find the addres of duration in mvhd.
     The calculation is obtained from the sum of address_mvhd + number_byte_mvhd + 12_null_bytes
     '''
-    mvhd_offset = 0
-    while data[mvhd_offset:mvhd_offset+4] != b'mvhd':
-        mvhd_offset += 1
-    return mvhd_offset + 4 + 12
+    mvhd_address = data.find(b'mvhd')
+    return mvhd_address + 4 + 12
 
 
 def rewrite_duration(inputfile: str, outputfile: str, duration_offset:int, input_duration) -> None:
