@@ -545,7 +545,7 @@ if result == z.sat:
 ## Encryption as a Service
 https://ioactive.com/wp-content/uploads/2015/07/ldc_tutorial.pdf
 https://link.springer.com/content/pdf/10.1007/BF00630563.pdf
-![](solve.py)
+![](CTF_Solution_Writeup/Competition/earth.cscg.live/Bacaan/EaaS_solution/solve.py)
 ## Des Light
 ```python
 #!/usr/bin/python3
