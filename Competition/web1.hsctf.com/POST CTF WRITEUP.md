@@ -166,6 +166,8 @@ c.sendline(payload5)
 
 c.interactive()
 ```
+
+payload: `setattr(copyright,__dict__,globals()),delattr(copyright,__builtins__)`
 # cryptography
 ## OTP
 ```python
