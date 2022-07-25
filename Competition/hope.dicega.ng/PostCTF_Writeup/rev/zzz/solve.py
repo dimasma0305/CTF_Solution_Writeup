@@ -1,4 +1,5 @@
 from z3 import *
+# reference: https://sechack.tistory.com/85
 
 s = [BitVec('s%i'%i, 8) for i in range(55)]
 print(s)
@@ -252,4 +253,3 @@ if s1.check() == sat:
     for i in range(len(res)):
         print(chr(int(str(res[s[i]]))), end='')
         
-# reference: https://sechack.tistory.com/85
