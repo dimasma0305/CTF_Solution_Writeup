@@ -1,1 +1,2 @@
 - https://sechack.tistory.com/85
+- https://brycec.me/posts/dicectf_at_hope_2022_writeups
