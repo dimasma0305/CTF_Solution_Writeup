@@ -56,4 +56,4 @@ const visit = async (url) => {
     }
 };
 
-visit("https://yourwebsite/payload");
+visit("https://google.com/");
