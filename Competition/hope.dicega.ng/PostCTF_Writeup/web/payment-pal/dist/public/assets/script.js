@@ -22,7 +22,7 @@ const parseQs = () => {
 };
 let qs = parseQs();
 
-const graphql = async (query, variables) => {
+const graphql = async (query, variables) => { 
   let r;
   if (variables) {
     r = await fetch("/graphql", {
