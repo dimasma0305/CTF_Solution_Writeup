@@ -1,0 +1,40 @@
+#!/usr/local/bin/tclsh
+#
+# adtodate
+#
+# Read the appledouble extension and report the created/modified dates within
+# 
+# 2002-02-08 dpwe@ee.columbia.edu
+# $Header: /homes/dpwe/public_html/resources/RCS/appledoubledates.html,v 1.2 2002/06/05 14:24:15 dpwe Exp $
+
+if {[llength $argv] == 1} {
+    set cfmt "%a %b %d %H:%M:%S %Z %Y"
+    set fname $argv
+} elseif {[llength $argv] == 2} {
+    set cfmt [lindex $argv 0]
+    set fname [lindex $argv 1]
+} else {
+    puts stderr "Usage: $argv0 \[formatstring\] AppleDoubleFile"
+    exit 1
+}
+
+set f [open $fname "r"]
+fconfigure $f -translation binary
+
+set dummy [read $f 541]
+
+set ctime [read $f 4]
+
+set mtime [read $f 4]
+
+close $f
+
+# Convert to integers
+
+binary scan $ctime "I" ctimesecs
+binary scan $mtime "I" mtimesecs
+
+set baseclock [clock scan "00:00:00 Jan 01 2000 GMT"]
+
+puts "ctime [clock format [expr $baseclock + $ctimesecs] -format $cfmt]"
+puts "mtime [clock format [expr $baseclock + $mtimesecs] -format $cfmt]"
