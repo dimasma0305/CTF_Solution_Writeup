@@ -1,0 +1,10 @@
+# Nmap 7.92 scan initiated Sun Jun 26 14:25:14 2022 as: /usr/bin/nmap -sU --max-retries 1 --open --open -oN nmap/UDP_10.10.11.152.nmap --system-dns --stats-every 3s 10.10.11.152
+Nmap scan report for timelapse.htb (10.10.11.152)
+Host is up (0.099s latency).
+Not shown: 997 open|filtered udp ports (no-response)
+PORT    STATE SERVICE
+53/udp  open  domain
+123/udp open  ntp
+389/udp open  ldap
+
+# Nmap done at Sun Jun 26 14:25:57 2022 -- 1 IP address (1 host up) scanned in 43.48 seconds

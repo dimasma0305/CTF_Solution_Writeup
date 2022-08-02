@@ -1,0 +1,79 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    
+    <style type="text/css">
+    body{
+        background-color:#fafcff;
+    }
+    p{
+        font-size: 14px;
+    }
+    h6{
+        font-size: 15px;
+    }
+    #hrx{
+        width: 55px; 
+        background-color: #27c6e6; 
+        height: 3px;
+    }       
+    </style>
+    <title> [ DNS Lookup ] </title>
+</head>
+<body class="d-flex flex-column min-vh-100">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand ms-5" href="/">[ Admin Dashboard ]</a>
+            <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarx" aria-controls="navbarx" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarx">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="/admin/">Home</a>
+                    <a class="nav-link" href="/lookup">Lookup</a>
+                    <a class="nav-link" href="/logout">Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+<div class="pb-3 mb-3"></div>
+
+
+    <div class="container pt-4 mt-4 pb-5">
+    <div class="row justify-content-center mt-5 mb-4">
+        <div class="col-md-4">
+            <div class="card shadow-sm border-dark rounded">
+                <div class="card-body">
+                    <h4 class="mb-4 mt-1 text-center text-dark">DNS Lookup</h4>
+                        <form action="/lookup" method="POST">
+                            <div class="mb-3">
+                                <input type="text" class="form-control" name="web" id="web" placeholder="google.com">
+                            </div>
+                            <div class="d-grid gap-2">
+                                <input type="submit" name="submit" value="Login" class="btn btn-dark">
+                            </div><br>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+        <div class="container pb-3">
+                <div class="row justify-content-center mb-2">
+                        <div class="col-md-4">
+                                <div class="card shadow-sm border-dark rounded">
+                                        <div class="card-body">
+                                                <h4 class="mb-4 mt-1 text-center text-dark">Result</h4>
+
+
+                                                        <p>
+

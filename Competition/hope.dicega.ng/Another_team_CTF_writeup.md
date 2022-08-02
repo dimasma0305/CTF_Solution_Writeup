@@ -1,0 +1,4 @@
+- https://sechack.tistory.com/85
+- https://brycec.me/posts/dicectf_at_hope_2022_writeups
+- https://github.com/dicegang/hope-2022-challenges
+- https://ret2school.github.io/post/catastrophe/

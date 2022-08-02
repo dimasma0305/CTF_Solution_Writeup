@@ -1,0 +1,4 @@
+# Nmap 7.92 scan initiated Sun Jun 19 10:25:48 2022 as: nmap -sC -sV -oA nmap_result 10.10.11.148
+Host: 10.10.11.148 ()	Status: Up
+Host: 10.10.11.148 ()	Ports: 22/open/tcp//ssh//(protocol 2.0)/, 80/open/tcp//http///	Ignored State: filtered (998)
+# Nmap done at Sun Jun 19 10:26:16 2022 -- 1 IP address (1 host up) scanned in 27.73 seconds

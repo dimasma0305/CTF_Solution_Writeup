@@ -1,0 +1,132 @@
+body {
+  background-color: #FAFAFA;
+  font-family: 'Nunito', sans-serif;
+  padding-top: 50px;
+}
+
+a, p {
+  color: #4b5156;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Raleway', sans-serif;
+}
+
+.button {
+  background-color: #FAFAFA;
+  border: 1px solid #EB796F;
+  border-radius: 5px;
+  color: #EB796F;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.container {
+  background-color: #FFFFFF;
+  margin: auto;
+  max-width: 550px;
+  box-shadow: 2px 2px 13px -4px #000000;
+}
+
+.delete-link {
+  color: #CF4949;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.header-bar {
+  background: linear-gradient(90deg, #EEA390 0%, #EB796F 43%, #EB796F 100%);
+  border-radius: 5px 5px 0 0;
+  color: #FFFFFF;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.header-bar a {
+  color: #FAFAFA;
+  text-decoration: none;
+}
+
+.header-bar h3 {
+  margin: 0;
+}
+
+.incomplete-tasks {
+  margin: 0;
+}
+
+.search-form {
+  display: flex;
+  margin-top: 20px;
+}
+
+.task-complete-icon {
+  background-color: #69C069;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+
+.task-incomplete-icon {
+  background-color: #DADADA;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+}
+
+.task-title {
+  display: flex;
+}
+
+.task-title a {
+  color: #4B5156;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+.task-wrapper {
+  align-items: center;
+  background-color: #FFFFFF;
+  border-top: 1px solid #E2E2E2;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+#add-link {
+  color: #EB796F;
+  font-size: 42px;
+  text-decoration: none;
+  text-shadow: 1px 1px #81413B;
+}
+
+#search-add-wrapper {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+input[type=text]
+input[type=password]
+
+label {
+  padding-top: 10px !important;
+  display: block;
+}
+
+textarea {
+  border: 1px solid #EB796F;
+  border-radius: 5px;
+  padding: 10px;
+  width: 90%;
+}

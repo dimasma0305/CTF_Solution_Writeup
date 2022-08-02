@@ -1,0 +1,4 @@
+# Static table lookup for hostnames.
+# See hosts(5) for details.
+34.65.33.171 legacy.tube.com
+

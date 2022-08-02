@@ -1,0 +1,84 @@
+   0:   55                      push   rbp
+   1:   48 89 e5                mov    rbp, rsp
+   4:   c7 45 fc 0c 00 00 00    mov    DWORD PTR [rbp-0x4], 0xc
+   b:   c1 65 fc 0a             shl    DWORD PTR [rbp-0x4], 0xa
+   f:   c1 7d fc 05             sar    DWORD PTR [rbp-0x4], 0x5
+  13:   83 45 fc 0a             add    DWORD PTR [rbp-0x4], 0xa
+  17:   81 6d fc c2 00 00 00    sub    DWORD PTR [rbp-0x4], 0xc2
+  1e:   81 7d fc 90 01 00 00    cmp    DWORD PTR [rbp-0x4], 0x190
+  25:   7f 06                   jg     0x2d
+  27:   83 45 fc 01             add    DWORD PTR [rbp-0x4], 0x1
+  2b:   eb f1                   jmp    0x1e
+  2d:   c1 7d fc 02             sar    DWORD PTR [rbp-0x4], 0x2
+  31:   81 7d fc ff 00 00 00    cmp    DWORD PTR [rbp-0x4], 0xff
+  38:   7f 06                   jg     0x40
+  3a:   83 45 fc 01             add    DWORD PTR [rbp-0x4], 0x1
+  3e:   eb f1                   jmp    0x31
+  40:   81 7d fc 00 01 00 00    cmp    DWORD PTR [rbp-0x4], 0x100
+  47:   75 5a                   jne    0xa3
+  49:   83 45 fc 01             add    DWORD PTR [rbp-0x4], 0x1
+  4d:   83 6d fc 01             sub    DWORD PTR [rbp-0x4], 0x1
+  51:   83 45 fc 01             add    DWORD PTR [rbp-0x4], 0x1
+  55:   83 6d fc 01             sub    DWORD PTR [rbp-0x4], 0x1
+  59:   8b 45 fc                mov    eax, DWORD PTR [rbp-0x4]
+  5c:   6b c0 1a                imul   eax, eax, 0x1a
+  5f:   89 45 fc                mov    DWORD PTR [rbp-0x4], eax
+  62:   8b 45 fc                mov    eax, DWORD PTR [rbp-0x4]
+  65:   69 c0 68 03 00 00       imul   eax, eax, 0x368
+  6b:   89 45 fc                mov    DWORD PTR [rbp-0x4], eax
+  6e:   8b 45 fc                mov    eax, DWORD PTR [rbp-0x4]
+  71:   69 c0 a4 10 92 00       imul   eax, eax, 0x9210a4
+  77:   89 45 fc                mov    DWORD PTR [rbp-0x4], eax
+  7a:   8b 45 fc                mov    eax, DWORD PTR [rbp-0x4]
+  7d:   69 c0 a4 10 92 00       imul   eax, eax, 0x9210a4
+  83:   89 45 fc                mov    DWORD PTR [rbp-0x4], eax
+  86:   8b 45 fc                mov    eax, DWORD PTR [rbp-0x4]
+  89:   69 c0 a4 10 92 00       imul   eax, eax, 0x9210a4
+  8f:   89 45 fc                mov    DWORD PTR [rbp-0x4], eax
+  92:   8b 45 fc                mov    eax, DWORD PTR [rbp-0x4]
+  95:   69 c0 a4 10 92 00       imul   eax, eax, 0x9210a4
+  9b:   89 45 fc                mov    DWORD PTR [rbp-0x4], eax
+  9e:   8b 45 fc                mov    eax, DWORD PTR [rbp-0x4]
+  a1:   eb 79                   jmp    0x11c
+  a3:   83 45 fc 01             add    DWORD PTR [rbp-0x4], 0x1
+  a7:   8b 55 fc                mov    edx, DWORD PTR [rbp-0x4]
+  aa:   89 d0                   mov    eax, edx
+  ac:   c1 e0 02                shl    eax, 0x2
+  af:   01 d0                   add    eax, edx
+  b1:   01 c0                   add    eax, eax
+  b3:   89 45 fc                mov    DWORD PTR [rbp-0x4], eax
+  b6:   8b 45 fc                mov    eax, DWORD PTR [rbp-0x4]
+  b9:   48 63 d0                movsxd rdx, eax
+  bc:   48 69 d2 67 66 66 66    imul   rdx, rdx, 0x66666667
+  c3:   48 c1 ea 20             shr    rdx, 0x20
+  c7:   c1 fa 02                sar    edx, 0x2
+  ca:   c1 f8 1f                sar    eax, 0x1f
+  cd:   89 c1                   mov    ecx, eax
+  cf:   89 d0                   mov    eax, edx
+  d1:   29 c8                   sub    eax, ecx
+  d3:   89 45 fc                mov    DWORD PTR [rbp-0x4], eax
+  d6:   c1 7d fc 0a             sar    DWORD PTR [rbp-0x4], 0xa
+  da:   8b 55 fc                mov    edx, DWORD PTR [rbp-0x4]
+  dd:   48 63 c2                movsxd rax, edx
+  e0:   48 69 c0 67 66 66 66    imul   rax, rax, 0x66666667
+  e7:   48 c1 e8 20             shr    rax, 0x20
+  eb:   c1 f8 02                sar    eax, 0x2
+  ee:   89 d6                   mov    esi, edx
+  f0:   c1 fe 1f                sar    esi, 0x1f
+  f3:   29 f0                   sub    eax, esi
+  f5:   89 c1                   mov    ecx, eax
+  f7:   89 c8                   mov    eax, ecx
+  f9:   c1 e0 02                shl    eax, 0x2
+  fc:   01 c8                   add    eax, ecx
+  fe:   01 c0                   add    eax, eax
+ 100:   29 c2                   sub    edx, eax
+ 102:   89 55 fc                mov    DWORD PTR [rbp-0x4], edx
+ 105:   83 45 fc 0a             add    DWORD PTR [rbp-0x4], 0xa
+ 109:   81 6d fc ff 00 00 00    sub    DWORD PTR [rbp-0x4], 0xff
+ 110:   8b 45 fc                mov    eax, DWORD PTR [rbp-0x4]
+ 113:   6b c0 64                imul   eax, eax, 0x64
+ 116:   89 45 fc                mov    DWORD PTR [rbp-0x4], eax
+ 119:   8b 45 fc                mov    eax, DWORD PTR [rbp-0x4]
+ 11c:   5d                      pop    rbp
+ 11d:   c3                      ret    
+ 11e:   f7                      .byte 0xf7
